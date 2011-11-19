@@ -67,7 +67,7 @@ In order to be ready on time, governments must address the economic and social i
 \subsection{The concept}
 \label{subsec:aalConcepts}
 
-The concept of \gls{aal} can be described through  6 dimensions.\\
+The Ambient Assisted Living Joint Programme~\cite{jointAALProgram} defines the concept of \gls{aal} through 6 dimensions.\\
 {\bf Autonomy} By increasing the autonomy, the self-confidence and the mobility of elderly people, \gls{aal} tends to extend the length of time people can live in their preferred environment. \\
 {\bf Activities} Maintaining physical or intellectual exercise helps elderly people to remain in good health, and prevents a decrease in capacities.\\
 {\bf Assisting} individuals at risk, by promoting a better and healthier lifestyle.\\
@@ -85,14 +85,15 @@ A solution, in assisting both helped people and helpers, could be to use Home Au
 \section{Home Automation}
 \label{sec:context.homeautomation}
 
-\begin{wrapfigure}{r}{40mm}
-	\vspace{-0.5cm}
-  \centering
-  \includegraphics[width=40mm]{part1/pics/Jetsons.jpeg}
-  \caption{The Jetsons}
-	\vspace{-0.5cm}  
-\end{wrapfigure}
-Do you remember the Jetsons? This cartoon family was born in 1962, created by William Hanna and Joseph Barbera. George and Jane were living in the \textit{Skypad Apartments} in \textit{Orbit City} with their children Judy and Elroy. Their housekeeping robot, Rose, handled all chores not done by the numerous automated appliances triggered with some push-buttons. Apart from the fact that it is just a fiction cartoon, it describes well the idea of smart homes or home automation. Let us get into a bit more detail about home automation, and see why it is still not applied in everyone's home.
+%\begin{wrapfigure}{r}{40mm}
+%	\vspace{-0.5cm}
+%  \centering
+%  \includegraphics[width=40mm]{part1/pics/Jetsons.jpeg}
+%  \caption{The Jetsons}
+%	\vspace{-0.5cm}  
+%\end{wrapfigure}
+
+In 1962, William Hanna and Joseph Barbera created the Jetsons cartoon family. In this carton, George and Jane were living in the \textit{Skypad Apartments} in \textit{Orbit City} with their children Judy and Elroy. Their housekeeping robot, Rose, handled all chores not done by the numerous automated appliances triggered with some push-buttons. Apart from the fact that it is just a fiction cartoon, it describes well the idea of smart homes or home automation. Let us get into a bit more detail about home automation, and see why it is still not applied in everyone's home.
 
 
 \subsection{Application domains}
@@ -111,7 +112,7 @@ Devices use these communication media to communicate with each other, and offer 
 The choice of a medium is linked to the constraints to be addressed. For instance, a Bus link is highly reliable, but requires the wiring of the entire house. On the other hand, Radio communications do not need any additional wiring, but are less reliable and batteries have to be changed regularly.\\
 
 {\bf Plethora of protocols}\\
-Historically, there is no specific home automation brand or manufacturer. It all comes from different trades such as electricity or \gls{hvac} control. According to the specific needs of their domains, each home automation manufacturer has developed a specific communication protocol for its devices to operate with each other. They also use several communication media to carry the communications. A simple consequence of that is the huge number of devices, protocols and media available on the home automation market. 
+Historically, there is no specific home automation brand or manufacturer. It all comes from different trades such as electricity or \gls{hvac} control. According to the specific needs of their domains, each home automation manufacturer has developed a specific communication protocol for its devices to operate with each other. They also use several communication media to carry the communications. A simple consequence of that is the huge number of devices, protocols and media available on the home automation market, illustrated in section~\ref{subsection:homeAutomationDetails}. 
 Technical solutions proposed by the Home Automation domain are so numerous, that there may be a solution for each need, in almost each domain. Nevertheless, due to this great diversification, no common management tool exists so far, resulting in expensive mono-manufacturer closed solutions, or no solution at all.\\
 Even if home automation technologies have existed for many years, no real standard has been released. Imposing a global standard, as was the case for the IP protocol for example, seems to be the best way to address such an issue. Naturally, each domain has created its communication protocol adapted to each business concern. Thus, finding a common protocol, used and understood by all devices from all domains, appears to be a very difficult task. And even if one finally emerges, developers will still have to deal with legacy devices using proprietary protocols.\\
 Moreover, the old way manufacturers think adds to the complexity of the problem. They still think that a closed world (I mean non-public protocol specifications) is a world that can be controlled. Indeed, it is true, but it is also a world that fewer and fewer people want to enter, because they are afraid of the captivity imposed by such solutions. Captive systems are often well tested, because of the  restricted number of available devices, but there is also a risk for these components of being removed from the market one day. In these conditions, people could not replace these components with compatible others, and are thus really concerned with the sustainability of the adopted solution.\\
@@ -143,7 +144,7 @@ The definition of a home-made interface fulfilling the requirements is easier th
 Openness is a strong requirement in home automation systems, as it has been in computers. Today, a computer manufacturer would not create a specific connection port, compatible with no other computer, unless he wants to create a new captive market.\\
 
 {\bf Adaptation}\\
-In an ideal world, devices never fail, services are always available and the Internet is always accessible. As demonstrated every day, the world we are living in is not perfect. Software systems, or systems dealing with objects or services linked to everyday life actions, have to take their execution environments into consideration. They should be able to dynamically adapt to changes around them while they are running, in order to maintain a given level of services or functionality as long as possible. Obviously, these adaptations should not require any reboot of the system, because a reboot could make all in-house functionalities unavailable. Lastly, an adaptation is not intended to add or remove any system functionality permanently. Otherwise, it is an evolution.\\
+In a perfect world, devices never fail, services are always available and the Internet is always available. As demonstrated every day, the world we are living in is not perfect. Software systems, or systems dealing with objects or services linked to everyday life actions, have to take their execution environments into consideration. They should be able to dynamically adapt to changes around them while they are running, in order to maintain a given level of services or functionality as long as possible. Obviously, these adaptations should not require any reboot of the system, because a reboot could make all in-house functionalities unavailable. Lastly, an adaptation is not intended to add or remove any system functionality permanently. Otherwise, it is an evolution.\\
 Execution policies or system reactions must be easily modifiable, in order to take into account any change in the user's requirements. For instance, depending on the level of dependency of an elderly person, the system may completely, partially or not at all automate the management of certain household functions such as heating or shutter management. This type of change in system behavior has to be made simple and operable by any authorized person, even with no specific skill in this domain.\\
 Most of all, these changes during runtime must not affect the execution of basic security functions (such as emergency call handling), neither in their behavior, nor in their execution during adaptation.\\
 Adaptations do not only concern technical elements, but also the user himself. All users are different. While some may be interested in new technologies, others are completely agnostic. When some are able to remember and learn how the system behaves, others may experience some memory loss. Where some have vision disorders, others experience hearing limitations. Software systems should be able to take into account these disabilities and adapt to their evolutions and to users' requirements.\\
@@ -158,7 +159,7 @@ People responsible for designing a solution for an installation query should hav
 
 {\bf Remote Control}\\
 More and more, people want to remotely access their belongings. This is also true for their homes. They would like to be able to remotely check the lights status, run a bath or switch on the alarm system that they forgot.\\
-In the context of building management facilities, specialized companies have different solutions to check the state of a building system. They either have remote access to all systems, or they check locally by hand. Obviously, the local solution is longer viable in the context of our society. Systems deployed to control buildings or homes should have remote access possibilities (under access control and agreement) to allow for distant diagnosis, corrections, or evolution actions from a control center.\\
+In the context of building management facilities, specialized companies have different solutions to check the state of a building system. They either have remote access to all systems, or they check locally by hand. Obviously, the local solution is longer viable in the context of our society. Systems deployed to control buildings or homes should have remote access possibilities (under access control and agreement) to allow for remote diagnosis, corrections, or evolution actions from a control center.\\
 
 {\bf Distribution}\\
 Today's systems work more and more with or on different execution platforms, and communicate more with each other. This is particularly true for home automation. For redundancy reasons and service level insurance a building and even a house can be equipped with multiple, independent, but connected controllers. These controllers can share the different functions to balance the loads on platforms, or offer a connection to a specific, locally-connected device. When a running platform fails, other platforms aware of its job can stand in temporarily, until the original controller is back in operation. Also, devices are becoming smarter and may make decisions by themselves. As a consequence, decisions and control could be distributed to several smart pieces of equipment.\\
@@ -176,7 +177,7 @@ New requirements for software are emerging from the accessibility of home automa
 
 \section{Scope of this work}
 \label{sec:scope}
-The list of requirements presented in the previous section is probably incomplete. A particular situation can bring many other issues for software engineering.\\
+The list of requirements presented in the previous section could be completed. A particular situation can bring many other issues for software engineering.\\
 This thesis focuses only on a subpart of these requirements and aims to propose a solution to conjunctively address interoperability, adaptation, openness, evolution, variability management and, partially, safety and security issues. The first goal of this thesis was to end up with a working solution able to cope with this sub-list of requirements. Other ones will be addressed in future works. As for safety and security issues, the work realized in this thesis partially addresses the problem, since questions about privacy and information security concerns have been decided as out of scope. The focus was more about ensuring consistency of assemblies and a fail-safe system.
 
 \newpage
@@ -247,6 +248,7 @@ Home automation has a bad reputation, due to several advertisements that promote
 
 
 \subsection{Home Automation details}
+\label{subsection:homeAutomationDetails}
 
 The evolution of concerns and needs in the home automation domain has led manufacturers to adapt their products over the years. As a consequence, lots of products communicating through many different media are available today. According to their manufacturers, and to their domains of use, devices also come with their own transportation protocols making their diversity even greater. This section briefly presents a non-exhaustive list of protocols and media used by home automation products to highlight the complexity of this domain with relation to the huge variability of solutions.\\
 
@@ -275,7 +277,14 @@ Nevertheless, it still is a good medium for a human-computer interface such as a
 
 {\bf X2D} Delta Dore is historically a French heating system manufacturer. This company has extended its activities to home automation and alarm systems, for home and building control. For their products to communicate, they have developed a communication protocol called X2D, using radio, bus and PLC media. Just as IOBL, the protocol is private, and no other manufacturer offer compatible products.\\
 
+{\bf X10} is a rather simple communication protocol for low cost home automation products. Sensors and actuators send data frames over \gls{plc} or radio to a maximum of 256 addresses, with no acknowledgement. It is thus impossible to know if an order has reached its destination, and there can be only one order at a time on the network.\\
+This protocol is quite limiting in term of number of devices, and guarantee of service, but it works and is pretty cheap compared to other product families. Moreover, technical specifications are available and design of compatible products is rather simple.\\
+
 {\bf Z-Wave} is a wireless technology to remotely control home appliances, entertainment products, and access systems, running in the 868MHz ISM band. Grouped into the Z-Wave Alliance\footnote{http://www.z-wavealliance.org/}, 160 manufacturers offer interoperable products in these domains, using this closed protocol. Based on a mesh topology, Z-Wave data frames can transit through several devices around the house to reach their destination. This is an interesting faculty to overpass radio obstacles and ensure delivery.\\
+ 
+{\bf ZigBee} is an open standard addressing low-cost, low-power M2M wireless networks. It was released by the IEEE in 2003 and over 300 manufacturers have since then joined the ZigBee Alliance. Working on 2.4GHz, 900MHz and 868MHz, ZigBee has been designed to be able to work in hostile radio environments. Network topology can be point-to-point, infrastructure or mesh, and accepts up to 65,000 nodes. Wireless products compatible with the ZibBee specifications target remote control, home automation or sensing domains.\\
+
+{\bf 6LoWPAN} is the name of a working group at the Internet Engineering Task Force (IETF). This group aim to reduce the memory footprint of IP frames (and principally IPV6 frames) for the protocol to be used in devices and networks with low power availability. This protocol would make it possible to use the powerful IP routing mechanisms, in sensor networks or distributed embedded applications, making them operable from any classical IP network. Specifications of 6LoWPAN can be found as RFC 4944\footnote{http://tools.ietf.org/html/rfc4944} and RFC 4919\footnote{http://tools.ietf.org/html/rfc4919}.\\
 
 {\bf European Eib/KNX consortium} The KNX Association\footnote{http://www.knx.org} was founded in May 1999, by the members of the EIBA (European Installation Bus Association), EHSA (European Home Systems Association) and BCI (BatiBUS Club International) associations. Its mission is to develop and promote the KNX standard so that it is recognized as "The worldwide standard for home and building control". The KNX standard has been designed to enable the control of applications in industrial, commercial and residential buildings worldwide.\\
 KNX has been approved as a European Standard (CENELEC EN 50090 and CEN EN 13321-1), an International Standard (ISO/IEC 14543-3), a Chinese Standard (GB/Z 20965) and a US Standard (ANSI/ASHRAE 135). It groups about 7000 KNX certified products from 200 member companies, installed by more than 30,000 KNX partner installers in 100 countries.\\
@@ -285,13 +294,6 @@ KNX is designed to automate and control lights, shutters and heating systems in 
 LonWorks products are mainly used for technical building management concerning lights and HVAC (Heating, Ventilation and Air Conditioning).\\
 
 {\bf BACnet} Developed under the auspices of the American Society of Heating, Refrigerating and Air-Conditioning Engineers (ASHRAE), BACnet\footnote{http://www.bacnet.org} is a Data Communication Protocol for Building Automation and Control Networks. It has been released as an American national standard, a European standard, a national standard in more than 30 countries and an ISO global standard. The protocol is supported and maintained by ASHRAE Standing Standard Project Committee 135, divided into 13 working groups. These groups work to integrate issues from various building aspects from "Objects and Services" cooperation to elevator or lighting management. In February 25, 2011, 503 Vendor IDs were issued from all over the world.\\
-
-{\bf X10} is a rather simple communication protocol for low cost home automation products. Sensors and actuators send data frames over \gls{plc} or radio to a maximum of 256 addresses, with no acknowledgement. It is thus impossible to know if an order has reached its destination, and there can be only one order at a time on the network.\\
-This protocol is quite limiting in term of number of devices, and guarantee of service, but it works and is pretty cheap compared to other product families. Moreover, technical specifications are available and design of compatible products is rather simple.\\
- 
-{\bf ZigBee} is an open standard addressing low-cost, low-power M2M wireless networks. It was released by the IEEE in 2003 and over 300 manufacturers have since then joined the ZigBee Alliance. Working on 2.4GHz, 900MHz and 868MHz, ZigBee has been designed to be able to work in hostile radio environments. Network topology can be point-to-point, infrastructure or mesh, and accepts up to 65,000 nodes. Wireless products compatible with the ZibBee specifications target remote control, light management or sensing domains.\\
-
-{\bf 6LoWPAN} is the name of a working group at the Internet Engineering Task Force (IETF). This group aim to reduce the memory footprint of IP frames (and principally IPV6 frames) for the protocol to be used in devices and networks with low power availability. This protocol would make it possible to use the powerful IP routing mechanisms, in sensor networks or distributed embedded applications, making them operable from any classical IP network. Specifications of 6LoWPAN can be found as RFC 4944\footnote{http://tools.ietf.org/html/rfc4944} and RFC 4919\footnote{http://tools.ietf.org/html/rfc4919}.\\
 
 \subsubsection{Application Protocols}
 
@@ -370,7 +372,8 @@ Possibly distributed over Internet, services must be {\it Technology Neutral} to
 
 {\bf SOA vs. WSOA}\\
 In the Software Services community, service-oriented architecture is often used instead of web services-oriented architecture. However, there is a clear separation to respect between service-oriented architectures and web service.\\
-Then, if a service is accessible through the Internet, this service is called web-service, and is a particular case of a service. Then service-oriented software can use this service as it would any other. In conclusion, I would say that a service-based application does not necessarily use web-services and may even use no web service at all. There are other means of creating software based on services.\\
+Then, if a service is accessible through the Internet, this service is called web-service, and is a particular case of a service. Then service-oriented software can use this service as it would any other. \\
+In conclusion, a service-based application does not necessarily use web-services and may even use no web service at all; there are other means of creating software based on services.\\
 
 {\bf Web-Services}\\
 A Web Service renders a service, using the Internet as a support. Web services are composed of methods that can be called by clients. Customers do not have to care about how the service is given and can just use it.\\
@@ -409,12 +412,12 @@ Thanks to the appearance of these two paradigms, ideas emerged about connecting 
 \vspace{0.5cm}
 {\bf OSGi}\\
 
-OSGi is the Open Service Gateway Initiative. This association created in 1999 aimed to provide facilities for software integration and development.
+OSGi is an association created in 1999 aimed to provide facilities for software integration and development.
 To achieve this task, the association released a set of specifications defining what any runtime implementation should do to reach a given service level. These specify which minimum set of services a runtime must offer to be compliant with the level.\\
-In OSGi, services are given and contained in deployments units called {\it bundles}. Each bundle contains a {\it Manifest} file giving information about the runtime dependencies, the classes offered and some other information about what the bundle needs to run. Bundles can be installed or removed at any time and their services can be started and stopped, with no need to restart the runtime platform.\\
+In OSGi, services are given and contained in deployments units called {\it bundles}. Each bundle contains a {\it Manifest} file giving information about the runtime dependencies, the classes offered and some other information about what the bundle needs to run. Bundles can be installed, updated or removed at any time and their services can be started and stopped, with no need to restart the runtime platform.\\
 Services are defined by Java interfaces (for Java runtime implementations), and are stored in the runtime context. Thus, any client on the platform who needs a service can search in the context registry for the service they need. Service method calls are locally handled inside a JVM, which makes this service-oriented runtime much faster than web service-based applications.\\
 
-In OSGi, relations between bundles are never made explicit. Worse still, relations between bundles can be due to service dependencies that are just hard-coded and can only be changed by rebuilding and redeploying the bundle. In a static application, with few updates in time, this is not a real problem. Moreover, there are very few reflection primitives and thus, interactions between bundles can hardly be traced or even made explicit. OSGi do not address issues of interoperability, variability management nor safety and security. The registry mechanism is a god point concerning openness, and adaptations and evolutions of applications are simplified by the native lifecycle management of OSGi. In a word, OSGi lacks of a clear means of visualization of the architecture while running, but makes a very good base.\\
+In OSGi, relations between bundles are never made explicit. Worse still, relations between bundles can be due to service dependencies that are just hard-coded and can only be changed by rebuilding and redeploying the bundle. In a static application, with few updates in time, this is not a real problem. Moreover, there are very few reflection primitives and thus, interactions between bundles can hardly be traced or even made explicit. OSGi do not address issues of interoperability, variability management nor safety and security. The registry mechanism is a good point concerning openness, and adaptations and evolutions of applications are simplified by the native lifecycle management of OSGi. In a word, OSGi lacks of a clear means of visualization of the architecture while running, but makes a very good base.\\
 
 The table below is completed for each approach or tool, and presents strengths and weaknesses in a synthetic way. Individual tables are merged altogether in section~\ref{ch:summary} as a synthesis. \\
  \\
@@ -427,11 +430,10 @@ The table below is completed for each approach or tool, and presents strengths a
 
 \vspace{0.5cm}
 
-{\bf JBI}\\
+{\bf Enterprise Service Bus}\\
 
-\gls{jbi} or JSR 208 is an industrial Java standard developed to ease the integration of software systems over Service-Oriented Architectures. It uses an \gls{esb} as a basis to define a component model. \\
-\gls{esb} refers to a business middleware family for service-oriented applications. This middleware acts as the only mediator of services in the enterprise, by providing a runtime environment for deploying business services. Legacy software can be integrated as services into the business service orchestration. These are declared as any other service, within the scope of the ESB runtime.\\
-The \gls{jbi} component model has been designed to reuse Java technologies such as WebServices, BPEL or JMS, and thus avoid new specific developments. The specifications have been successfully implemented in several frameworks such as OpenESB by SunMicrosystems, ServiceMix by Apache Foundation, or Petals by OW2. 
+\gls{esb} refers to a business middleware family for service-oriented applications. This middleware acts as the only mediator of services in the enterprise, by providing a runtime environment for deploying business services. Legacy software can be integrated as services into the business service orchestration. These are declared as any other service, within the scope of the ESB runtime. The specifications have been successfully implemented in several frameworks such as OpenESB by SunMicrosystems, ServiceMix by Apache Foundation, or Petals by OW2.\\
+\gls{jbi} or JSR 208 is an industrial Java standard developed to ease the integration of software systems over Service-Oriented Architectures. It uses an \gls{esb} as a basis to define a component model. It has been designed to reuse Java technologies such as WebServices, BPEL or JMS, and thus avoid new specific developments.  
 In \gls{jbi}, components have an independent life-cycle and communicate through their services over normalized message middleware. In fact, this middleware acts as an abstraction layer for communications and eases the integration. \gls{jbi} components are split into two categories:\\
 {\bf Service Engine Components} are directly hosted by the \gls{jbi} runtime environment, and are in charge of message processing, routing or orchestration of services. They cannot communicate outside of this scope.\\
 {\bf Binding Components} expose or consume standard \gls{jbi} services, and perform the bindings with external non-standard software.\\
@@ -527,7 +529,7 @@ In addition, component models such as Fractal are slightly opaque with respect t
 
 \subsubsection{Description}
 
-By nature, Service-Oriented software is highly dynamic and its architecture is not always easy to figure out. Indeed, the services used and the connections between software elements are never known prior to the execution because of the search-and-use principle. Component models for \gls{soa} have been invented to make the description of this kind of application more explicit. They also merge well-known software component techniques with new services ideas, and conciliate the best of each approach.\\
+By nature, Service-Oriented software is dynamic and its architecture is not always easy to figure out. Indeed, the services used and the connections between software elements are never known prior to the execution because of the late binding principle. The late binding principle relates to the fact that a service to be used is searched and selected just before its call. Component models for \gls{soa} have been invented to try to make the description of this kind of application more explicit. They merge well-known software component techniques with new services ideas, and tend to conciliate the best of each approach.\\
 
 Components, as defined by component models, provide services to other components through their ports. Components' ports are defined by an API. Services, from service-oriented architectures are intended to be used in orchestrations to create value-added applications.\\
 Since both of these concepts offer services, new component models have been designed to merge both paradigms. This section presents some famous implementations of these component models.\\
@@ -544,7 +546,7 @@ Since both of these concepts offer services, new component models have been desi
 {\bf Specifications}\\
 \par {\bf Assembly} defines how components are packaged as services and how they can be combined into composites that perform a particular task.
 Composite components can be used as classical service components, which simplifies their reuse. Assembly in \gls{sca} also defines how components and composites are connected. Functional service properties, such as data encryption, or authentication, are described outside the service business code, which saves developers' valuable time. Indeed, it enables the modification of the connections or the properties, without changing the business code.
-\par {\bf Client and Implementation Model} defines how services are packaged and accessed in various languages. API implementations in Java, BPEL, C++ or the Spring Framework, offer simple means to package a service or access any \gls{sca} service. For development concerns, it means that there is only one interface and packaging method to learn to provide and use any \gls{sca} service. This interface makes it possible to access to the component using Web services, JMS, JCA and EJBs natively. Here again, service properties are described outside the code, to make changes much easier.
+\par {\bf Client and Implementation Model} defines how services are packaged and accessed in various languages. API implementations in Java, BPEL, C++, Javascript or the Spring Framework, offer simple means to package a service or access any \gls{sca} service. For development concerns, it means that there is only one interface and packaging method to learn to provide and use any \gls{sca} service. This interface makes it possible to access to the component using Web services, JMS, JCA and EJBs natively. Here again, service properties are described outside the code, to make changes much easier.
 \par {\bf Policy Framework} is aimed at offering means for the definition of security, authentication, quality of service, and other important policies of a service. In fact, the \gls{sca} Policy Framework makes use of the WS-Policy and WS-Policy Framework open standards, as a support to describe policies. This way, descriptions of policies such as "any data sent to this service must be encrypted" or "the user of this service must be authenticated" are made available. Here again, policies can be defined outside the business code of the service.
 \par {\bf Bindings} specify the mechanisms that can be used to access or connect a component. Bindings can be implemented using Web services, JMS, JCA, EJBs or any other communication way. Keeping the consistency of the approach, bindings are defined outside the component business code.\\
 

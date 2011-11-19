@@ -1,0 +1,42 @@
+
+
+Plan / Approche thèse
+
+
+I) Problème sociétaux, Contexte général
+
+- Vieillissement, Manque de Places en EPHAD
+=> Mise en place de solutions d'aide à domicile, manque de main d'oeuvre
+
+- Fossé technologique / Générationnel
+=>
+
+
+
+II) Les problèmes, besoins engendrés
+
+Publi CAL
+
+
+III) Les approches pour résoudre les problèmes
+
+Publi ServiceWave
+
+
+IV) Le modèle de composant
+Publi A venir
+
+
+V) Réalisation Validation
+
+- EnTiMid
+- Bench
+- LOUSTIC
+- Fête de la science
+- Startup
+
+
+VI) La suite
+- Travail IHM
+- Collaborations sur EcoNRJ
+- Collaboration Multimédia

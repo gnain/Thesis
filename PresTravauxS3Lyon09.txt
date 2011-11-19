@@ -1,0 +1,19 @@
+
+
+Title:
+
+WP Addressed : WP JRA 1.2 & 1.3
+
+Abstract:
+
+EnTiMid is a middleware built on an OSGi platform. Created to address various devices in houses or buildings, it offers a sufficient abstraction level to present all the devices present in a house as service providers; so that each of them offers and potentially requires other services.
+Using EnTiMid in real conditions to address some society issues, like the aging of population or the energy consumption il buildings, the developpement of EnTiMid throws software engineering problems.
+
+1st
+EnTiMid is able to contol devices in a house, and in more general case in a building, where people live and where the safety of inhabitants must be ensured at any moment. Developped as an SBA, this problem clearly addresses monitoring and adaptation problems. WP JRA 1.2
+
+2nd
+System users will be offered to design by themselves the scenarios that they whant. This functonnality implies two things. The first is to verify that the scenario described will never lead to a dangerous situation or to an inconsistent configuration of the system. Then monitoring and adaptation mechanisms have to be deployed to react in case the orchestration (scenario) is modified, or if a service involved desappears.
+
+3rd
+Obviously, the Quality of Service of the overall application, as the one of each involved service have to conform to a high level of quality agreement that have to be monitored and controled, to enforce the safety of the system and so, the safety of the people dependent of the system.

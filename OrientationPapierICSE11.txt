@@ -1,0 +1,150 @@
+Date: 10 Mai 2010
+
+Présents: JM, Olivier, Greg
+
+
+Idée générale
+°°°°°°°°°°°°°°
+Modèle de composant avec typage à la configuration / A l'assemblage, facilitant l'utilisation transparente d'objets de la vie de tous les jours et de services disponibles par internet.
+
+
+Propriétés du modèle de composant:
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+- Typage à l'assemblage/configuration. Pas au runtime(dynamique) et pas à la compil(statique).
+- Le typage des ports est indépendant du typage langage de programmation.
+- Les bindings se font graphiquement donc on s'affranchit des noms des méthodes, de leur nombre de paramètres ou leur ordre.
+- On vérifie la substituabilité des paramètres avant le déploiement
+
+
+Pourquoi ?
+°°°°°°°°°°
+- Types des services, ou des actions sur les objets jamais connus à l'avance.
+- Parfois besoin d'une grande souplesse pour connecter des choses non prévues à l'avance (UP -> ON)
+- Agrégation d'évènements pour CEP. Connecter une macro event/action typée est compliquée
+
+
+Avantages:
+°°°°°°°°°°
+- On peut tout connecter avec un minimum d'effort.
+- Le typage étant réalisé à une étape intermédiaire entre la compile et le runtime on peut:
+    - Modifier les règles de typage à volonté en fonction.. des situations, des utilisateurs (User Defined Type System)
+    - On a des règles de typage plus flexibles (reste à définir "flexible").
+    - Les règles de connexion peuvent aussi être basées sur des propriétés de qualité des service
+
+=> Citer les niveaux de contra Papier JM et Noel
+
+
+Inconvénients:
+°°°°°°°°°°°°°°
+- Trop grande liberté, possibilité de faire n'importe quoi… mais c'est aussi vrai avec n'importe quelle méthode.
+
+
+Related Works à traiter:
+°°°°°°°°°°°°°°°°°°°°°°°°
+- Faire un parallèle avec les architectures REST, qui lève tous les types, mais on perd quand même le typage complètement.
+- Aborder les Synthétiseurs de connecteurs, qui engendrent des surcoûts de performances.
+- les ADLs  Bindings <-> Connecteurs ?
+- BPEL, langage de Workflow plus procédural, contre système réactif !
+
+
+Validation, Etude:
+°°°°°°°°°°°°°°°°°°
+
+Statistiques sur des projets/programmes BPEL, WSDL (Galaxy ?)
+  - Métriques sur le code produit/nécessaire ?
+
+Comparaison de code  (Efforts en MM, effort en lignes de code, performances ?)
+  - Tout a la main
+  - Générer des adapteurs
+  - BPEL + WSDL
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+1)   INTRO::
+========
+En soa: 2 modèles
+REST pas assez typé
+WSDL trop typé
+
+=> Modèle gardant le typage à la phase de modélisation, et grande fexibilité au runtime/implementation.
+
+Idée générale
+°°°°°°°°°°°°°°
+Modèle de composant avec typage à la configuration / A l'assemblage, facilitant l'utilisation transparente d'objets de la vie de tous les jours et de services disponibles par internet.
+
+
+Propriétés du modèle de composant:
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+- Typage à l'assemblage/configuration. Pas au runtime(dynamique) et pas à la compil(statique).
+- Le typage des ports est indépendant du typage langage de programmation.
+- Les bindings se font graphiquement donc on s'affranchit des noms des méthodes, de leur nombre de paramètres ou leur ordre.
+- On vérifie la substituabilité des paramètres avant le déploiement
+
+
+Pourquoi ?
+°°°°°°°°°°
+- Types des services, ou des actions sur les objets jamais connus à l'avance.
+- Parfois besoin d'une grande souplesse pour connecter des choses non prévues à l'avance (UP -> ON)
+- Agrégation d'évènements pour CEP. Connecter une macro event/action typée est compliquée
+
+
+Avantages:
+°°°°°°°°°°
+- On peut tout connecter avec un minimum d'effort.
+- Le typage étant réalisé à une étape intermédiaire entre la compile et le runtime on peut:
+    - Modifier les règles de typage à volonté en fonction.. des situations, des utilisateurs (User Defined Type System)
+    - On a des règles de typage plus flexibles (reste à définir "flexible").
+    - Les règles de connexion peuvent aussi être basées sur des propriétés de qualité des service
+
+
+
+2) Modèle de composant 
+- structurel, pattern commande qui lève le typage
+ -> Modélisation modèle asynchrone (in/out)
+ -> Exemple code (génération/extraction modèle) (pattern commande -avec paramètre- pour levée du typage)
+- Type system flexible modulaire extensible
+
+
+
+3) Validation, Etude:
+°°°°°°°°°°°°°°°°°°
+
+Exemple pure IoT + cep
+Exemple Integration IoT + IoS
+
+
+Statistiques sur des projets/programmes BPEL, WSDL (Galaxy ?)
+  - Métriques sur le code produit/nécessaire ?
+
+Comparaison de code  (Efforts en MM, effort en lignes de code, performances ?)
+  - Tout a la main
+  - Générer des adapteurs
+  - BPEL + WSDL
+
+
+
+4 DISCUSSION::
+============
+
+Cohérence entre modèle et code
+
+
+5 ) Related Works à traiter:
+°°°°°°°°°°°°°°°°°°°°°°°°
+- Faire un parallèle avec les architectures REST, qui lève tous les types, mais on perd quand même le typage complètement.
+- Aborder les Synthétiseurs de connecteurs, qui engendrent des surcoûts de performances.
+- les ADLs  Bindings <-> Connecteurs ?
+- BPEL, langage de Workflow plus procédural, contre système réactif !
+
+
+
+6 Conclusion

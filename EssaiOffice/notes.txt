@@ -1,0 +1,51 @@
+
+State of the art
+========================
+
+Points à aborder
++++++++++++++
+Travaux sur plateformes à composants
+    - Fractal, ptf de granoble
+ Archis à service
+    - Osgi, WS, Rest
+ Synthèse de connecteur (Issarny, etc.)
+    - 
+Présentation du panormama industriel standards
+
+
+Orientation, forme
+++++++++++++++
+
+Terminer par des besoins et amener les problématiques
+Arriver a une grille de classification dans le 2)
+Et choisir: solution/problem oriented et faire synthèse
+Highlighter les manques et exprimer où va la these. Ca doit finir l’état de l’art.
+Puis la contrib. décrivant l’ensemble des travaux
+Montrer que ca comble bien les trous.
+
+Ce qu'on doit y retrouver mélé
++++++++++++++++++++++++
+Related (citer les travaux des rapporteurs)
+Concepts et Définitions
+IDM, etc.
+
+
+
+
+Coeur de these
+=============================
+
+Présenter avec des details pour montrer la non trivialité
+Toujours guider faire un fil rouge ou je veux en venir/la ou je suis arrive dans chaque section.
+
+Validation
+=============================
+J’ai bien identifié les problèmes. Voila les façons possibles de les résoudres.
+Forcer les travaux en montrant que ca valide les problèmes poses.
+Justifier les choix. Pas faire d’historique. Présenter l’état actuel.
+Montrer les versions en concurrence.
+
+
+Montre les demos grand public  parce que on a été beaucoup solicité. Question pourquoi ? Sortir un requrement des “WorkArround”.
+
+Sortir les perspectives au fur et a mesure.
