@@ -81,7 +81,7 @@ The \gls{aal} context, the home automation domain description and the state of t
 The last line completes this table with \enti{}, and shows that it fits most of these requirements.\\
 \begin{table}[h!]
 \begin{tabular}{cm{.13\textwidth}|| >{\centering\arraybackslash}m{.12\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.10\textwidth}|}
- & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+ & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline\hline
  \multirow{7}{8mm}{\begin{sideways}\parbox{25mm}{\centering Generic Approaches}\end{sideways}}
  %&{\small Hydra} 		& + & + & + &  &  & \# \\
@@ -107,6 +107,8 @@ The last line completes this table with \enti{}, and shows that it fits most of 
  &{\small PervML} 		& + & + & + & + & + &  \\
  &{\small iPOJO} 		&  & + & + &  &  &  \\
  &{\small Niagara} 		& + & + &  &  &  &  \\
+ \cline{2-8}
+ &{\small EnTiMid} 		& + & + & + &  &  &  \\
  \hline
 \end{tabular}
 \caption{Adequateness of the contribution}
@@ -133,7 +135,7 @@ The {\bf Reflexive Model} proposed by \gls{mde} is still available. The Model@Ru
 \section{Immediate benefits}
 
 \subsection{Development of components made easier}
-The tools coming with this contribution make the development of components easier. The component model forces developers to respect properties such as close isolation, or externalization of component couplings and makes the maintenance and the evolutions easier. The use of annotations in the component code and the availability of a code generator also simplify the everyday work of component developers. The code generator and the synchronization mechanism bring significant gains in terms of prevention of errors, time consumption and shorten the time elapsed from a new requirement to the solution.
+The tools coming with this contribution aims at supporting the development of components. The component model forces developers to respect properties such as close isolation, or externalization of component couplings and makes the maintenance and the evolutions easier. The use of annotations in the component code and the availability of a code generator also simplify the everyday work of component developers. The code generator and the synchronization mechanism bring significant gains in terms of prevention of errors, time consumption and shorten the time elapsed from a new requirement to the solution.
 
 \subsection{Simple creation of applications}
 Thanks to the component model and modeling tools, the creation of applications is made very simple. Libraries of components can be imported into editors and components are assembled and connected using drag-and-drop interactions. If checkers so authorize, connections from port to port make it possible to connect any port to any other, whatever their roles or actions.\\
