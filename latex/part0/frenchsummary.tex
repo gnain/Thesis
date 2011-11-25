@@ -30,11 +30,12 @@ Les {\bf contrôles distants} peuvent être nécessaires pour des questions de m
 
 {\bf L'ouverture} doit permettre à des applications tierces, d'accéder aux fonctionnalités ou aux produits disponibles dans le système. En effet, la passerelle de communication avec les réseaux KNX, par exemple, n'admet qu'une seule connexion à la fois. Il est donc nécessaire de rendre les produits et fonctionnalités disponible à d'autres applications, afin de ne pas verrouiller les accès. Par ailleurs, cette ouverture au monde extérieur permet à des applications tierces de se connecter aux produits, et rendre des services à valeur ajoutée, sans avoir besoin de connaître l'organisation interne du système de gestion d'accès aux périphériques. L'ouverture permet donc d'enrichir l'application par des contributions externes apportant des fonctionnalités intelligentes supplémentaires.\\
 
-{\bf La distribution et l'administration distante} sont évidemment deux préoccupations que l'on retrouve au c\oe ur de tout système domotique largement déployé. La dispersion des équipements dans l'habitat mais aussi la dispersion des déploiements à l'échelle d'une ville rendent nécessaire la prise en compte des challenges des grands systèmes distribués.  En effet, outre la communication entre équipement, les contrôles distants peuvent être nécessaires pour des questions de maintenance, de vérification de l'état de la maison par des professionnels accrédités, ou réaliser des actions à distance pour assister la personne sur des difficultés ponctuels.\\
+{\bf La distribution et l'administration distante} sont évidemment deux préoccupations que l'on retrouve au c\oe ur de tout système domotique largement déployé. La dispersion des équipements dans l'habitat mais aussi la dispersion des déploiements à l'échelle d'une ville rendent nécessaire la prise en compte des challenges des grands systèmes distribués.\\
+%En effet, outre la communication entre équipement, les contrôles distants peuvent être nécessaires pour des questions de maintenance, de vérification de l'état de la maison par des professionnels accrédités, ou réaliser des actions à distance pour assister la personne sur des difficultés ponctuels.\\
 
 
-{\bf La gestion de la variabilité} est une préoccupation liées au fort besoin de personnalisation des solutions. En effet, l'ensemble des options déployées sur les systèmes à l'échelle d'une ville, peut devenir complexe. De plus, les évolutions ne sont pas uniformément déployées à l'échelle d'une ville, menant alors à une grande diversité de combinaisons de versions de protocoles, et d'assemblages de produits.\\
-Des outils doivent donc être mis à disposition par ces systèmes, pour assister les ingénieurs et techniciens dans la fabrication de solutions. Des outils d'aide à la décision basés sur une liste d'exigences et de produits disponibles pourraient, par exemple, être d'une aide précieuse.\\
+{\bf La gestion de la variabilité} est une préoccupation liée au fort besoin de personnalisation des solutions. En effet, l'ensemble des options déployées sur les systèmes à l'échelle d'une ville, peut devenir complexe. De plus, les évolutions ne sont pas uniformément déployées à l'échelle d'une ville, menant alors à une grande diversité de combinaisons de versions de protocoles, et d'assemblages de produits.\\
+Des outils doivent donc être mis à disposition par ces systèmes, pour assister les ingénieurs et techniciens dans la fabrication et la maintenance de solutions. Des outils d'aide à la décision basés sur une liste d'exigences et de produits disponibles pourraient, par exemple, être d'une aide précieuse.\\
 
 
 
@@ -49,7 +50,7 @@ Des outils doivent donc être mis à disposition par ces systèmes, pour assiste
 
 {\bf La sûreté} est un élément important dans les systèmes domotiques. Ces systèmes se voient confiée la responsabilité de gérer une partie de la maison, afin d'améliorer la vie de ses occupants. Un niveau de service minimum doit être garanti afin que les personnes aidées par ces systèmes ne se retrouvent pas bloqués en cas d'urgence par exemple. \\
 
-{\bf La sécurité} est une autre préoccupation que l'on retrouve dans la construction de solution domotique. En effet, les accès au système doivent être sécurisés afin d'éviter qu'il soit contrôlé par des personnes non autorisées. Le compromis difficile est toujours de rendre cette sécurité transparente pour les personnels habilités.\\
+{\bf La sécurité} est une autre préoccupation que l'on retrouve dans la construction de solutions domotiques. En effet, les accès au système doivent être sécurisés afin d'éviter qu'il soit contrôlé par des personnes non autorisées. Le compromis difficile est toujours de rendre cette sécurité transparente pour les personnels habilités.\\
 
 
 {\bf L'acceptabilité et l'accessibilité} de ces systèmes par tous les utilisateurs sont des facultés à prendre en compte, particulièrement dans le cadre d'une aide à domicile pour des personnes âgées ou dépendantes. Ces systèmes logiciels sont utilisés à la fois par les aidants à domicile, et par les personnes âgées, et pour ni l'une ni l'autre le système ne doit être perçu comme une contrainte supplémentaire dans leur métier ou leur vie. Enfin, les personnes âgées doivent pouvoir rester maître de leur environnement, et donc, garder la main sur le système et ses actions.\\
@@ -61,11 +62,11 @@ Parmi l'ensemble des exigences listées dans la section~\ref{sec:concluRequireme
 
 De nombreuses approches s'intéressant à la résolution de problèmes d'interopérabilité, d'adaptation ou de contrôle distant pour différentes applications, sont détaillées dans la littérature scientifique.\\
 D'une manière générale, les approches s'appuyant sur des architectures à base de services semblent être adaptés pour résoudre des problèmes d'adaptation dynamique et d'interopérabilité, mais manquent clairement de moyens de description de l'architecture du logiciel pendant son exécution. Ils apportent aussi des mécanismes essentiels pour faire face aux apparitions et disparitions de produits, de par le fait qu'un service peut être démarré ou arrêté à tout instant.\\
-Les architectures s'appuyant sur le paradigme de composants logiciels, offrent pour leur part un niveau d'abstraction idéal pour représenter les produits domotiques. Cependant, les ports de communication des composants sont souvent définis par l'intermédiaire d'interfaces de programmation qui rendent impossible certaines connections non prévues à l'avance, sans ajout de connecteur {\it ad-hoc}.\\
+Les architectures s'appuyant sur le paradigme de composants logiciels, offrent pour leur part un niveau d'abstraction idéal pour représenter les produits domotiques. Cependant, les ports de communication des composants sont souvent définis par l'intermédiaire d'interfaces de programmation qui rendent impossible certaines connections non prévues à l'avance, sans ajout de connecteurs {\it ad-Hoc}.\\
 Il semble toutefois que le mélange de l'approche à composant, et l'approche des architectures à base de services, identifié comme des composants pour les architectures orientées services, soit l'approche qui réponde le mieux aux besoins identifiés; que les bénéfices de l'une permettent de combler les manques de l'autre approche.\\
 De façon orthogonale à toutes ces approches, les méthodes et techniques issues de l'ingénierie dirigée par les modèles, offrent des outils de manipulation et de gestion des éléments de systèmes, tant au cours du design que de l'exécution. Ils semblent apporter une réponse appropriée à la gestion de la variabilité, à la description des systèmes.\\
 
-Toutes les approches et outils considérés dans cette étude sont reportés dans le tableau~\ref{tab:adequatnessFr} présenté en section~\ref{sec:adequationFr}, qui présente une synthèse des points forts et faibles de chaque outils ou approche, par rapport aux exigences identifiées.
+Toutes les approches et outils considérés dans cette étude sont reportés dans le tableau~\ref{tab:adequatnessFr} présenté en section~\ref{sec:adequationFr}, qui présente une synthèse des points forts de chaque outils ou approche, par rapport aux exigences identifiées.
 
 
 \section{Vue d'ensemble de la contribution}
@@ -78,9 +79,9 @@ Inspirée par les réalisations dans le domaine de l'électronique, cette thèse
 
 L'implémentation de cette contribution, appelée \enti{}, se compose de plusieurs éléments. Présentés sous forme de couches, ces éléments s'affairent chacun à résoudre une préoccupation particulière dans le problème global.\\
 
-La couche d'{\bf Interopérabilité des produits} est responsable de la communication avec les produits physiques, et entre leurs représentants dans le modèle de composants. Ces communications sont assurées par un ensemble de {\it Drivers}, chargés de la communication avec les produits, et de communications basées sur des messages asynchrones, qui permettent une connexion de composants réputés incompatibles.\\
+La couche d'{\bf Interopérabilité des produits} est responsable de la communication avec les produits physiques, et avec leurs représentants dans le modèle de composants. Ces communications sont assurées par un ensemble de {\it Drivers}, chargés de la communication avec les produits, et de communications basées sur des messages asynchrones, qui permettent une connexion de composants réputés incompatibles.\\
 
-La couche {\bf Modèle de composants} apporte les abstractions nécessaires à la représentation et à la manipulation des produits par un architecte. Elle offre un moyen de décrire de façon unifiée les actions possibles sur les composants (et donc sur les produits), et les informations disponibles, à travers le paradigme de ports. Dans ce modèle, les ports des composants peuvent être de deux sortes: synchrones (ports de service) ou asynchrones (ports de messages). Construit à partir des abstractions communes des modèles de composants de la littérature, ce modèle est conservé à l'exécution offrant une couche de réflexion à l'exécution sur lequel les outils de vérification et de simulations peuvent être facilement branchés.  Les spécificités d'implémentation des composant sont effacées par le modèle de composant sous-jacent. Ainsi, les simulations et vérifications de conformité des assemblages peuvent être réalisées de façon uniforme. L'indépendance du modèle permet de mener ces tests sans conséquence aucune sur le logiciel en train de s'exécuter. Cette couche contribue à la sécurité du système, à la gestion de la variabilité et aux mécanismes adaptations en apportant des outils pour chacun de ces domaines. Des outils ont aussi été développés afin de garantir, en permanence, la cohérence entre les implémentations et leurs représentants dans le modèle.\\
+La couche {\bf Modèle de composants} apporte les abstractions nécessaires à la représentation et à la manipulation des produits par un architecte logiciel. Elle offre un moyen de décrire de façon unifiée les actions possibles sur les composants (et donc sur les produits), et les informations disponibles, à travers le paradigme de ports. Dans ce modèle, les ports des composants peuvent être de deux sortes: synchrones (ports de service) ou asynchrones (ports de messages). Construit à partir des abstractions communes des modèles de composants de la littérature, ce modèle est conservé à l'exécution offrant une couche de réflexion à l'exécution sur lequel les outils de vérification et de simulations peuvent être facilement branchés.  Les spécificités d'implémentation des composant sont effacées par le modèle de composant. Ainsi, les simulations et vérifications de conformité des assemblages peuvent être réalisées de façon uniforme. L'indépendance du modèle permet de mener ces tests sans conséquence aucune sur le logiciel en train de s'exécuter. Cette couche contribue à la sécurité du système, à la gestion de la variabilité et aux mécanismes adaptations en apportant des outils pour chacun de ces domaines. Des outils ont aussi été développés afin de garantir, en permanence, la cohérence entre les implémentations et leurs représentants dans le modèle.\\
 
 
 
@@ -91,14 +92,14 @@ L'{\bf Environnement d'exécution orienté services} complète la contribution e
 
 \section{Adéquation de la contribution}
 \label{sec:adequationFr}
-Le contexte de l'aide à domicile de personnes âgées, la description du domaine de la domotique, et l'état de l'art, ont permis d'extraire une liste d'exigences identifiées comme essentielles pour qu'un système logiciel soit utilisable dans ce contexte. Le tableau ~\ref{tab:adequatnessFr} détaille les forces et faiblesses de chacune des approches considérées face à ces exigences.\\
-La dernière ligne du tableau présente la contribution de cette thèse, et montre ainsi ses forces et faiblesses comparées aux mêmes préoccupations.\\
+Le contexte de l'aide à domicile de personnes âgées, la description du domaine de la domotique, et l'état de l'art, ont permis d'extraire une liste d'exigences identifiées comme essentielles pour qu'un système logiciel soit utilisable dans ce contexte. Le tableau ~\ref{tab:adequatnessFr} détaille les forces de chacune des approches considérées face à ces exigences.\\
+La dernière ligne du tableau présente la contribution de cette thèse, et montre ainsi ses forces comparées aux mêmes préoccupations.\\
 
-\todo{tableau à mettre à jour par rapport à la liste des critères.}
+%\todo{tableau à mettre à jour par rapport à la liste des critères.}
 
 \begin{table}[h!]
 \begin{tabular}{cm{.13\textwidth}|| >{\centering\arraybackslash}m{.12\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.10\textwidth}|}
- & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+ & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline\hline
  \multirow{7}{8mm}{\begin{sideways}\parbox{25mm}{\centering Generic Approaches}\end{sideways}}
  %&{\small Hydra} 		& + & + & + &  &  & \# \\
@@ -124,6 +125,8 @@ La dernière ligne du tableau présente la contribution de cette thèse, et mont
  &{\small PervML} 		& + & + & + & + & + &  \\
  &{\small iPOJO} 		&  & + & + &  &  &  \\
  &{\small Niagara} 		& + & + &  &  &  &  \\
+ \cline{2-8}
+ &{\small EnTiMid} 		& + & + & + &  &  &  \\
  \hline
 \end{tabular}
 \caption{Adéquation de la contribution aux exigences}
@@ -132,12 +135,12 @@ La dernière ligne du tableau présente la contribution de cette thèse, et mont
 
 Dans la contribution de cette thèse, le problème de l'interopérabilité est la préoccupation principale de la couche d'interopérabilité des produits, assistée par la couche apportant le modèle de composant. L'ouverture est assurée par les {\it wrappers} au niveau des protocoles d'application, et par les {\it drivers} au niveau des constructeurs de produits. Les capacités d'adaptation pendant l'exécution et d'évolution sont rendues possibles par la couche de \textit{Model@Runtime} et l'environnement d'exécution construit à partir d'une architecture orientée services. Le contrôle distant est offert au travers des {\it wrappers} et du \textit{model@runtime}. La gestion de la variabilité, quand à elle, est facilitée par la présence du modèle pendant l'exécution, mais les outils restent insuffisants pour résoudre complètement le problème.
 
-\section{Intégration de l'état de l'art}
+\section{Intégration à l'état de l'art}
 
 Au cours de l'étude de l'état de l'art et des approches, de bonnes propriétés ont été identifiées. La contribution de cette thèse est conservative par rapport à ces propriétés.\\
 
 Le {\bf modèle de réflexion indépendant} proposé dans le domaine de l'ingénierie des modèles, est rendu disponible par la couche {\it Model@Runtime}. Ce modèle abstrait de l'architecture pendant l'exécution est indépendant et synchronisé avec l'environnement d'exécution. Cette indépendance permet la création de raisonneurs capables de proposer des changements, et de vérifier la validité de ces derniers avant qu'ils soient réellement appliqués.\\
-La {\bf gestion externalisée des liaisons} entre les composants est imposée par la couche de \textit{Model@Runtime}, et rendue possible par le modèle de composant, ainsi que par les \textit{drivers} de la couche d'interopérabilité qui ne peuvent pas présumer d'une utilisation spécifique des composants. Cette explicitation des liaisons permet l'adaptation de l'architecture, \emph{ç-à-d} la modification connexions, ou même les composants, pendant l'exécution. La nécessaire indépendance des composants pour permettre l'interopérabilité et les adaptations, renforce aussi l'intér\^et d'extraire les dépendances.\\
+La {\bf gestion externalisée des liaisons} entre les composants est imposée par la couche de \textit{Model@Runtime}, et rendue possible par le modèle de composant, ainsi que par les {\it drivers} de la couche d'interopérabilité qui ne peuvent pas présumer d'une utilisation spécifique des composants. Cette explicitation des liaisons permet l'adaptation de l'architecture, \emph{ç-à-d} la modification connexions, ou même les composants, pendant l'exécution. La nécessaire indépendance des composants pour permettre l'interopérabilité et les adaptations, renforce aussi l'intér\^et d'extraire les dépendances.\\
 Le {\bf déploiement à chaud} fût conservé grâce au choix fait de construire les développements de l'environnement d'exécution sur une plateforme orientée services. Il était nécessaire de conserver cette propriété indispensable pour le support de l'adaptation, ou le faire évoluer, en déployant de nouveaux composants sans redémarrage.\\
 {\bf L'isolation close} entre les types de composants et les instances est aussi une mesure aidant à garantir l'interopérabilité, et la gestion indépendante des différents éléments composant l'application. En effet, les produits physiques ayant chacun des cycles de vie indépendants, il fallait que le système puisse les gérer de façon indépendante aussi.\\
 {\bf L'ouverture}, identifiée comme bonne propriété, le fût aussi comme une exigence incontournable pour ce type de systèmes. Ainsi, cette bonne propriété est aussi conservée.
@@ -150,7 +153,7 @@ Les outils développés en support de la contribution de cette thèse offre une 
 
 
 \subsection{Création d'applications par assemblage}
-Le modèle de composant et les outils de modélisation rendent simple la création d'assemblages de composants, et donc, d'applications. Les librairies de composants créées par les développeurs peuvent être importées dans les éditeurs, afin que les composants soient intégrés et connectés. Les connections port-à-port permettent de connecter deux ports, quels que soient leurs noms ou utilités, si les outils de vérifications personnalisables valident ou non la pertinence de l'assemblage.\\
+Le modèle de composant et les outils de modélisation apportent un suppot à la création d'assemblages de composants, et donc, d'applications. Les librairies de composants créées par les développeurs peuvent être importées dans les éditeurs, afin que les composants soient intégrés et connectés. Les connections port-à-port permettent de connecter deux ports, quels que soient leurs noms ou utilités, si les outils de vérifications personnalisables valident ou non la pertinence de l'assemblage.\\
 Par ailleurs, les développeurs de produits domotiques, familiers des composants électroniques, sont familiarisés avec le paradigme de composants de par sa proximité du modèle électronique. Cette rapide prise en main permet aux ingénieurs et techniciens de créer des applications personnalisées pour répondre strictement aux besoins de chaque personne.
 
 \subsection{Viabilité et précision}
@@ -164,13 +167,13 @@ Le modèle de composant proposé dans cette thèse permet la connexion de compos
 
 \subsection{Description structurelle}
 
-Le modèle de composant proposé dans la contribution de cette thèse facilite la description structurelle de l'architecture d'un système, alors que les gens sont plus enclin à décrire le comportement qu'ils attendent d'un système logiciel. En plus du modèle de composant( et donc de la description structurelle de la solution), un outil permettant de décrire le comportement attendu de l'assemblage devrait être proposé. Dans ces conditions, un utilisateur final pourrait être capable de modifier le comportement du système sans avoir à s'occuper de la structuration des composants internes.\\
+Le modèle de composant proposé dans la contribution de cette thèse facilite la description structurelle de l'architecture d'un système, alors que les gens sont plus enclin à décrire le comportement qu'ils attendent d'un système logiciel. En plus du modèle de composant (et donc de la description structurelle de la solution), un outil permettant de décrire le comportement attendu de l'assemblage devrait être proposé. Dans ces conditions, un utilisateur final pourrait être capable de modifier le comportement du système sans avoir à s'occuper de la structuration des composants internes.\\
 Le principal challenge réside dans le fait que le comportement global du système peut être décrit en plusieurs morceaux. En effet, les gens seront capables de décrire ce que le système doit faire si une alarme se déclenche, si la porte s'ouvre ou s'il fait froid, mais n'auront pas une vision globale du comportement du système, et des conséquences de chacun de ces petits comportements. Les différents comportements peuvent par ailleurs interagir les uns avec les autres et amener le système dans des états incohérent.\\
 Enfin des utilisateurs non experts du domaine, et les utilisateurs finaux ne le sont pas à priori, n'expriment que le comportement nominal attendu. A partir de cette description, des outils doivent analyser les points probables de défaillances ou d'erreurs, et tenter d'y parer.
 
 \subsection{Paramètres de ports}
 Les mises en \oe uvre de différents modèles de composant classiques ont été exclus des solutions envisageables pour cette thèse, parce que la spécification de leurs ports par une interface logicielle était trop stricte pour le domaine considéré. Trop stricte, parce que les méthodes et les paramètres de ces méthodes, s'ils ne sont pas parfaitement alignés, empêchent toute connexion sans l'intervention de connecteurs {\it ad-Hoc}. Le modèle de composant proposé dans cette thèse n'a pas complètement résolu ce problème. Il a été remonté au niveau du modèle, le rendant plus simple à gérer.\\
-Si le problème d'alignement des paramètres n'a pas été vraiment traité dans cette thèse, il a cependant été identifié et des solutions apparaissent dans la littérature scientifique par l'utilisation de connecteurs, pouvant avoir des comportements plus complexes qu'un simple appel de méthode ou envoie de message. Des mécanismes de \textit{mapping} ou de re-nommage, par exemple, peuvent être imaginés pour résoudre l'alignement~\cite{mickaelICSE}.
+Si le problème d'alignement des paramètres n'a pas été vraiment traité dans cette thèse, il a cependant été identifié et des solutions apparaissent dans la littérature scientifique par l'utilisation de connecteurs, pouvant avoir des comportements plus complexes qu'un simple appel de méthode ou envoie de message. Des mécanismes de {\it mapping} ou de re-nommage, par exemple, peuvent être imaginés pour résoudre l'alignement.%~\cite{mickaelICSE}.
 
 
 
@@ -201,7 +204,7 @@ Dans le contexte de l'aide à domicile de personnes âgées, le choix a été fa
 
 
 Cette thèse a été menée dans le cadre du Réseau d'Excellence Européen S-Cube.
-S-Cube~\footnote{http://www.s-cube-network.eu/} est un réseau d'excellence Européen en Logiciels, Services et Systèmes. Ce réseau d'excellence a pour ambition de faire de coordonner la recherche européenne sur les services logiciels. En connectant la recherche à l'industrie, et en unifiant des recherches multidisciplinaires, S-Cube cherche à développer des méthodes d'ingénierie des services, agiles et globales, et spécifier les principes et techniques d'adaptation des services.\\
+S-Cube~\footnote{http://www.s-cube-network.eu/} est un réseau d'excellence Européen en Logiciels, Services et Systèmes. Ce réseau d'excellence a pour ambition de coordonner la recherche européenne sur les services logiciels. En connectant la recherche à l'industrie, et en unifiant des recherches multidisciplinaires, S-Cube cherche à développer des méthodes d'ingénierie des services, agiles et globales, et spécifier les principes et techniques d'adaptation des services.\\
 Ce réseau d'excellence a été financé par le programme de recherche Européen (FP7) 'Coordination', sous le thème des Technologies de la Communication et de l'Information (ICT). En plus d'offrir un fort support pour les collaboration et des opportunités de mobilité entre les instituts de recherches Européens, S-Cube a financé plusieurs thèses de doctorat pour les différentes couches de la vue globale présentée en figure~\ref{fig:scube-overview}\\
 
 
