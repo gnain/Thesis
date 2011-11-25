@@ -43,16 +43,21 @@ Software systems have to be aware of these problems and offer tools in order to 
 {\bf Acceptability \& Accessibility} are issues that must be addressed, particularly when a software system takes responsibility for part of the home management. The \gls{aal} domain is a complex environment in which solutions must support the activity of elderly people and help carers in their work. For both of them, the system must not be perceived as a new constraint, or considered as stigmatizing. People must accept the solution deployed in their home and have to be reassured that they will keep a hand on things that could happen.\\
 
 
-\section{Survey of existing approached}
+\section{Survey of existing approaches}
 
 Among all the requirements listed in section~\ref{sec:concluRequirements}, the survey of existing approaches concentrated on interoperability, adaptation, evolution, openness and variability management.\\
 
-Scientific literature abounds with proposals using different approaches to cope with interoperability, adaptation or remote control concerns in several applications. Generally, service-based propositions sound helpful in targeting the interoperability of devices, but clearly lack description of the running application once deployed. They also bring essential ideas to properly handle the sporadic appearance of elements, since a service can be started and stopped at any time.\\
-Component-based architectures provide an ideal abstraction level to meet the requirements for a virtual representation of home automation devices. However, components' ports are often defined by an API. This strict definition may disallow some connection unforeseen at design time, without the help of {\it ad-hoc} connectors.\\
-Using components for SOA is certainly the best approach for our concerns, since the benefits of the first balance out the drawbacks of the second.\\
+Scientific literature abounds with proposals using different approaches to cope with interoperability, adaptation or remote control concerns in several applications. Generally, service-based propositions~\cite{OSGI:r4,ESB} sound helpful in targeting the interoperability of devices, but clearly lack description of the running application once deployed. They also bring essential ideas to properly handle the sporadic appearance of elements, since a service can be started and stopped at any time.\\
+Component-based architectures~\cite{Georgiadis:2002,RobVanOmmering:2000,Bruneton:2006} provide an ideal abstraction level to meet the requirements for a virtual representation of home automation devices. However, components' ports are often defined by an API. This strict definition may disallow some connection unforeseen at design time, without the help of {\it ad-hoc} connectors.\\
+Using components for SOA~\cite{sca:specs,Melisson:2010,Escoffier:2007} is certainly the best approach for our concerns, since the benefits of the first balance out the drawbacks of the second.\\
 Transversally to any approach, model-driven engineering methods and techniques come with a lot of tools for virtual element manipulations. They seem handy for runtime management of devices, for the description of software systems, and for variability management.\\
 
 All the approaches, tools, and frameworks considered in this survey have been reported in table~\ref{tab:adequatness}. This table synthesizes the strengths and weaknesses of each approach in relation to the requirements identified.
+
+
+
+
+
 
 \section{Outline of the contribution}
 
@@ -80,35 +85,37 @@ The {\bf Wrappers} layer takes responsibility for publishing the devices present
 The \gls{aal} context, the home automation domain description and the state of the art, led to an extraction of a list of requirements. These requirements have been stressed as the essential abilities a software system should be able to provide to be used in this context. The table~\ref{tab:adequatness} recalls the table presented in chapter~\ref{ch:summary}, in which all existing approaches were presented, and where their participation with relation to each identified concern had been reported.\\
 The last line completes this table with \enti{}, and shows that it fits most of these requirements.\\
 \begin{table}[h!]
-\begin{tabular}{cm{.13\textwidth}|| >{\centering\arraybackslash}m{.12\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.10\textwidth}|}
- & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+\begin{tabular}{cm{.23\textwidth}|| >{\centering\arraybackslash}m{.06\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}|}
+ & & {\tiny Interop.} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline\hline
- \multirow{7}{8mm}{\begin{sideways}\parbox{25mm}{\centering Generic Approaches}\end{sideways}}
+ \multirow{7}{7mm}{\begin{sideways}\parbox{25mm}{\small\centering Generic Approaches}\end{sideways}}
  %&{\small Hydra} 		& + & + & + &  &  & \# \\
- &{\small OSGi} 		&  & + & + & + &  &  \\ 
- &{\small JBI} 			& + & + &  & + &  &  \\
+ &{\small OSGi~\cite{OSGI:r4}}				&  & + & + & + &  &  \\ 
+ &{\small ESB~\cite{Chappell:2004}}								& + & + &  & + &  &  \\
  \cline{2-8}%\hline
  %\multirow{3}{7mm}{\begin{sideways}\parbox{13mm}{\centering \tiny Component Models}\end{sideways}}
- &{\small Darwin} 		&  &  & + & + &   & + \\ 
- &{\small Koala} 		&  &  &   & + & + & + \\
- &{\small Fractal} 		&  &  & + &   &   &  \\
+ &{\small Darwin~\cite{Georgiadis:2002}}		&  &  & + & + &   & + \\ 
+ &{\small Koala~\cite{RobVanOmmering:2000}}	&  &  &   & + & + & + \\
+ &{\small Fractal~\cite{Bruneton:2006}}		&  &  & + &   &   &  \\
  \cline{2-8}%\hline
  %\multirow{2}{7mm}{\begin{sideways}\parbox{12mm}{\centering \tiny Component Models for SOA}\end{sideways}}
- &{\small SCA} 			&   & + &  & + &  & +\\
- &{\small FraSCAti}     & + & + & + & + &  & + \\
+ &{\small SCA~\cite{sca:specs}}				&   & + &  & + &  & +\\
+ &{\small FraSCAti~\cite{Melisson:2010}}	 	& + & + & + & + &  & + \\
+ &{\small iPOJO~\cite{Escoffier:2007}}		& + & + & + & + &  & + \\
  \hline\hline
- \multirow{9}{8mm}{\begin{sideways}\parbox{30mm}{\centering  Domain-Specific Approaches}\end{sideways}} 
- &{\small uMiddle} 		&  &  &  &  &  &  \\
- &{\small SOPRANO} 		&  &  & + & + &  &  \\
- &{\small Ga\"ia} 		& + &  & + & + &  &  \\
- &{\small Dia Suite} 	& + & + &  &  & + & + \\
- &{\small Habitation} 	& + &  &  &  & + &  \\
- &{\small WADL} 		& + &  & + & + &  &  \\
- &{\small PervML} 		& + & + & + & + & + &  \\
- &{\small iPOJO} 		&  & + & + &  &  &  \\
- &{\small Niagara} 		& + & + &  &  &  &  \\
+ \multirow{9}{7mm}{\begin{sideways}\parbox{30mm}{\small\centering  Domain-Specific Approaches}\end{sideways}} 
+ &{\small uMiddle~\cite{Nakazawa:2007}}		&  &  &  &  &  &  \\
+ &{\small SOPRANO~\cite{Wolf:2010}}			&  &  & + & + &  &  \\
+ &{\small Ga\"ia~\cite{Roman:2002}}			& + &  & + & + &  &  \\
+ &{\small Dia Suite~\cite{CASSOU:2010}}		& + & + &  &  & + & + \\
+ &{\small Habitation~\cite{Jimenez:2009}}	& + &  &  &  & + &  \\
+ &{\small WADL~\cite{Cervantes:2008}}		& + &  & + & + &  &  \\
+ &{\small PervML~\cite{Munoz:2006a}}			& + & + & + & + & + &  \\
+ &{\small AutoHome~\cite{Bourcier:2011}}		&  & + & + &  &  &  \\
+ &{\small WComp~\cite{Ferry:2011uq}}			& + &  & + & + &  & \\
+ &{\small Niagara~\cite{Tridium:2008}}		& + & + &  &  &  &  \\
  \cline{2-8}
- &{\small EnTiMid} 		& + & + & + &  &  &  \\
+ &{\small EnTiMid} 							& + & + & + & + &  &  \\
  \hline
 \end{tabular}
 \caption{Adequateness of the contribution}
@@ -158,7 +165,7 @@ Lastly, as non-experts of the domain, the description people can make of how the
 
 \subsection{Port parameters}
 Classical component models have been excluded in this thesis, because of the too strict specification of ports, making it impossible to connect two ports if their APIs are not aligned. But the problem of alignment has not completely disappeared in our component model. It has been moved from the implementation to the virtual representative of each component. Thus, the alignment of parameters passed through the ports has to be resolved at model level, before deployment.\\
-Although this problem has not been addressed in this thesis, it has already been identified and scientists have already proposed some solutions under terms such as component connectors, which can have complex behaviors (cf Beugnard et al. in \cite{Matougui:2005}). Mechanisms such as renaming or mappings of parameters could be implemented to cope with this issue.
+Although this problem has not been addressed in this thesis, it has already been identified and scientists have already proposed some solutions under terms such as component connectors, which can have complex behaviors (cf Beugnard et al. in~\cite{Matougui:2005}). Mechanisms such as renaming or mappings~\cite{Clavreul:2010} of parameters could be implemented to cope with this issue.
 
 \subsection{Too weak checkers}
 

@@ -61,9 +61,9 @@ Des outils doivent donc être mis à disposition par ces systèmes, pour assiste
 Parmi l'ensemble des exigences listées dans la section~\ref{sec:concluRequirementsFr}, l'étude des approches existantes ici résumée, s'est concentrée sur les aspects d'interopérabilité, d'adaptation, d'évolution, d'ouverture et de gestion de la variabilité.\\
 
 De nombreuses approches s'intéressant à la résolution de problèmes d'interopérabilité, d'adaptation ou de contrôle distant pour différentes applications, sont détaillées dans la littérature scientifique.\\
-D'une manière générale, les approches s'appuyant sur des architectures à base de services semblent être adaptés pour résoudre des problèmes d'adaptation dynamique et d'interopérabilité, mais manquent clairement de moyens de description de l'architecture du logiciel pendant son exécution. Ils apportent aussi des mécanismes essentiels pour faire face aux apparitions et disparitions de produits, de par le fait qu'un service peut être démarré ou arrêté à tout instant.\\
-Les architectures s'appuyant sur le paradigme de composants logiciels, offrent pour leur part un niveau d'abstraction idéal pour représenter les produits domotiques. Cependant, les ports de communication des composants sont souvent définis par l'intermédiaire d'interfaces de programmation qui rendent impossible certaines connections non prévues à l'avance, sans ajout de connecteurs {\it ad-Hoc}.\\
-Il semble toutefois que le mélange de l'approche à composant, et l'approche des architectures à base de services, identifié comme des composants pour les architectures orientées services, soit l'approche qui réponde le mieux aux besoins identifiés; que les bénéfices de l'une permettent de combler les manques de l'autre approche.\\
+D'une manière générale, les approches s'appuyant sur des architectures à base de services~\cite{OSGI:r4,ESB} semblent être adaptés pour résoudre des problèmes d'adaptation dynamique et d'interopérabilité, mais manquent clairement de moyens de description de l'architecture du logiciel pendant son exécution. Ils apportent aussi des mécanismes essentiels pour faire face aux apparitions et disparitions de produits, de par le fait qu'un service peut être démarré ou arrêté à tout instant.\\
+Les architectures s'appuyant sur le paradigme de composants logiciels~\cite{Georgiadis:2002,RobVanOmmering:2000,Bruneton:2006}, offrent pour leur part un niveau d'abstraction idéal pour représenter les produits domotiques. Cependant, les ports de communication des composants sont souvent définis par l'intermédiaire d'interfaces de programmation qui rendent impossible certaines connections non prévues à l'avance, sans ajout de connecteurs {\it ad-Hoc}.\\
+Il semble toutefois que le mélange de l'approche à composant, et l'approche des architectures à base de services, identifié comme des composants pour les architectures orientées services~\cite{sca:specs,Melisson:2010,Escoffier:2007}, soit l'approche qui réponde le mieux aux besoins identifiés; que les bénéfices de l'une permettent de combler les manques de l'autre approche.\\
 De façon orthogonale à toutes ces approches, les méthodes et techniques issues de l'ingénierie dirigée par les modèles, offrent des outils de manipulation et de gestion des éléments de systèmes, tant au cours du design que de l'exécution. Ils semblent apporter une réponse appropriée à la gestion de la variabilité, à la description des systèmes.\\
 
 Toutes les approches et outils considérés dans cette étude sont reportés dans le tableau~\ref{tab:adequatnessFr} présenté en section~\ref{sec:adequationFr}, qui présente une synthèse des points forts de chaque outils ou approche, par rapport aux exigences identifiées.
@@ -95,38 +95,40 @@ L'{\bf Environnement d'exécution orienté services} complète la contribution e
 Le contexte de l'aide à domicile de personnes âgées, la description du domaine de la domotique, et l'état de l'art, ont permis d'extraire une liste d'exigences identifiées comme essentielles pour qu'un système logiciel soit utilisable dans ce contexte. Le tableau ~\ref{tab:adequatnessFr} détaille les forces de chacune des approches considérées face à ces exigences.\\
 La dernière ligne du tableau présente la contribution de cette thèse, et montre ainsi ses forces comparées aux mêmes préoccupations.\\
 
-%\todo{tableau à mettre à jour par rapport à la liste des critères.}
+\todo{tableau à mettre à jour par rapport à la liste des critères.}
 
 \begin{table}[h!]
-\begin{tabular}{cm{.13\textwidth}|| >{\centering\arraybackslash}m{.12\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.10\textwidth}|}
- & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+\begin{tabular}{cm{.23\textwidth}|| >{\centering\arraybackslash}m{.06\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}|}
+ & & {\tiny Interop.} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline\hline
- \multirow{7}{8mm}{\begin{sideways}\parbox{25mm}{\centering Generic Approaches}\end{sideways}}
+ \multirow{7}{7mm}{\begin{sideways}\parbox{25mm}{\small\centering Generic Approaches}\end{sideways}}
  %&{\small Hydra} 		& + & + & + &  &  & \# \\
- &{\small OSGi} 		&  & + & + & + &  &  \\ 
- &{\small JBI} 			& + & + &  & + &  &  \\
+ &{\small OSGi~\cite{OSGI:r4}}				&  & + & + & + &  &  \\ 
+ &{\small ESB~\cite{Chappell:2004}}								& + & + &  & + &  &  \\
  \cline{2-8}%\hline
  %\multirow{3}{7mm}{\begin{sideways}\parbox{13mm}{\centering \tiny Component Models}\end{sideways}}
- &{\small Darwin} 		&  &  & + & + &   & + \\ 
- &{\small Koala} 		&  &  &   & + & + & + \\
- &{\small Fractal} 		&  &  & + &   &   &  \\
+ &{\small Darwin~\cite{Georgiadis:2002}}		&  &  & + & + &   & + \\ 
+ &{\small Koala~\cite{RobVanOmmering:2000}}	&  &  &   & + & + & + \\
+ &{\small Fractal~\cite{Bruneton:2006}}		&  &  & + &   &   &  \\
  \cline{2-8}%\hline
  %\multirow{2}{7mm}{\begin{sideways}\parbox{12mm}{\centering \tiny Component Models for SOA}\end{sideways}}
- &{\small SCA} 			&   & + &  & + &  & +\\
- &{\small FraSCAti}     & + & + & + & + &  & + \\
+ &{\small SCA~\cite{sca:specs}}				&   & + &  & + &  & +\\
+ &{\small FraSCAti~\cite{Melisson:2010}}	 	& + & + & + & + &  & + \\
+ &{\small iPOJO~\cite{Escoffier:2007}}		& + & + & + & + &  & + \\
  \hline\hline
- \multirow{9}{8mm}{\begin{sideways}\parbox{30mm}{\centering  Domain-Specific Approaches}\end{sideways}} 
- &{\small uMiddle} 		&  &  &  &  &  &  \\
- &{\small SOPRANO} 		&  &  & + & + &  &  \\
- &{\small Ga\"ia} 		& + &  & + & + &  &  \\
- &{\small Dia Suite} 	& + & + &  &  & + & + \\
- &{\small Habitation} 	& + &  &  &  & + &  \\
- &{\small WADL} 		& + &  & + & + &  &  \\
- &{\small PervML} 		& + & + & + & + & + &  \\
- &{\small iPOJO} 		&  & + & + &  &  &  \\
- &{\small Niagara} 		& + & + &  &  &  &  \\
+ \multirow{9}{7mm}{\begin{sideways}\parbox{30mm}{\small\centering  Domain-Specific Approaches}\end{sideways}} 
+ &{\small uMiddle~\cite{Nakazawa:2007}}		&  &  &  &  &  &  \\
+ &{\small SOPRANO~\cite{Wolf:2010}}			&  &  & + & + &  &  \\
+ &{\small Ga\"ia~\cite{Roman:2002}}			& + &  & + & + &  &  \\
+ &{\small Dia Suite~\cite{CASSOU:2010}}		& + & + &  &  & + & + \\
+ &{\small Habitation~\cite{Jimenez:2009}}	& + &  &  &  & + &  \\
+ &{\small WADL~\cite{Cervantes:2008}}		& + &  & + & + &  &  \\
+ &{\small PervML~\cite{Munoz:2006a}}			& + & + & + & + & + &  \\
+ &{\small AutoHome~\cite{Bourcier:2011}}		&  & + & + &  &  &  \\
+ &{\small WComp~\cite{Ferry:2011uq}}			& + &  & + & + &  & \\
+ &{\small Niagara~\cite{Tridium:2008}}		& + & + &  &  &  &  \\
  \cline{2-8}
- &{\small EnTiMid} 		& + & + & + &  &  &  \\
+ &{\small EnTiMid} 							& + & + & + & + &  &  \\
  \hline
 \end{tabular}
 \caption{Adéquation de la contribution aux exigences}
@@ -173,7 +175,7 @@ Enfin des utilisateurs non experts du domaine, et les utilisateurs finaux ne le 
 
 \subsection{Paramètres de ports}
 Les mises en \oe uvre de différents modèles de composant classiques ont été exclus des solutions envisageables pour cette thèse, parce que la spécification de leurs ports par une interface logicielle était trop stricte pour le domaine considéré. Trop stricte, parce que les méthodes et les paramètres de ces méthodes, s'ils ne sont pas parfaitement alignés, empêchent toute connexion sans l'intervention de connecteurs {\it ad-Hoc}. Le modèle de composant proposé dans cette thèse n'a pas complètement résolu ce problème. Il a été remonté au niveau du modèle, le rendant plus simple à gérer.\\
-Si le problème d'alignement des paramètres n'a pas été vraiment traité dans cette thèse, il a cependant été identifié et des solutions apparaissent dans la littérature scientifique par l'utilisation de connecteurs, pouvant avoir des comportements plus complexes qu'un simple appel de méthode ou envoie de message. Des mécanismes de {\it mapping} ou de re-nommage, par exemple, peuvent être imaginés pour résoudre l'alignement.%~\cite{mickaelICSE}.
+Si le problème d'alignement des paramètres n'a pas été vraiment traité dans cette thèse, il a cependant été identifié et des solutions apparaissent dans la littérature scientifique par l'utilisation de connecteurs~\cite{Matougui:2005}, pouvant avoir des comportements plus complexes qu'un simple appel de méthode ou envoie de message. Des mécanismes de {\it mapping} ou de re-nommage, par exemple, peuvent être imaginés pour résoudre l'alignement~\cite{Clavreul:2010}.
 
 
 

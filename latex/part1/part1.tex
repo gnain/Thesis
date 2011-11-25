@@ -390,6 +390,8 @@ In conclusion, a service-based application does not necessarily use web-services
 
 {\bf Web-Services}\\
 A Web Service renders a service, using the Internet as a support. Web services are composed of methods that can be called by clients. Customers do not have to care about how the service is given and can just use it.\\
+
+The use of Web Services is based on a "search and use" mechanism. Service providers are responsible for the registration of their services into a \gls{uddi} directory. When a client wants to use a service, he first searches in a service directory. Each registered service comes with a description, which helps clients in their service selection process. The real call to the service is made directly from the client to the server. Figure~\ref{fig:web-servce-archi} illustrates this mechanism.\\
 \begin{wrapfigure}{r}{.5\textwidth}
 %	\vspace{-0.5cm}
   \centering
@@ -398,8 +400,6 @@ A Web Service renders a service, using the Internet as a support. Web services a
   \label{fig:web-servce-archi}
 %	\vspace{0.2cm}  
 \end{wrapfigure}
-
-The use of Web Services is based on a "search and use" mechanism. Service providers are responsible for the registration of their services into a \gls{uddi} directory. When a client wants to use a service, he first searches in a service directory. Each registered service comes with a description, which helps clients in their service selection process. The real call to the service is made directly from the client to the server. Figure~\ref{fig:web-servce-archi} illustrates this mechanism.\\
 
 Registrations and descriptions of services in the \gls{uddi} are based on a description language for web services called \gls{wsdl}. The description of a service informs users about the list of operations offered, parameters, and types of objects manipulated. Dynamic discovery and use of services are enabled this way.\\
 Communications between clients, servers and \gls{uddi} instances use a unique carriage protocol called SOAP. SOAP has been based on XML descriptions in order to make use of HTTP, SMTP, and other application protocols as carriers.\\
@@ -768,13 +768,13 @@ Transversally, model-driven engineering methods and techniques come with a lot o
 
 
 \begin{table}[h!]
-\begin{tabular}{cm{.16\textwidth}|| >{\centering\arraybackslash}m{.12\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.10\textwidth}|}
- & & {\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+\begin{tabular}{cm{.23\textwidth}|| >{\centering\arraybackslash}m{.06\textwidth}| >{\centering\arraybackslash}m{.07\textwidth}| >{\centering\arraybackslash}m{.09\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}| >{\centering}m{.11\textwidth}| >{\centering\arraybackslash}m{.08\textwidth}|}
+ & & {\tiny Interop.} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline\hline
- \multirow{7}{8mm}{\begin{sideways}\parbox{25mm}{\small\centering Generic Approaches}\end{sideways}}
+ \multirow{7}{7mm}{\begin{sideways}\parbox{25mm}{\small\centering Generic Approaches}\end{sideways}}
  %&{\small Hydra} 		& + & + & + &  &  & \# \\
  &{\small OSGi~\cite{OSGI:r4}}				&  & + & + & + &  &  \\ 
- &{\small ESB}								& + & + &  & + &  &  \\
+ &{\small ESB~\cite{Chappell:2004}}								& + & + &  & + &  &  \\
  \cline{2-8}%\hline
  %\multirow{3}{7mm}{\begin{sideways}\parbox{13mm}{\centering \tiny Component Models}\end{sideways}}
  &{\small Darwin~\cite{Georgiadis:2002}}		&  &  & + & + &   & + \\ 
@@ -786,7 +786,7 @@ Transversally, model-driven engineering methods and techniques come with a lot o
  &{\small FraSCAti~\cite{Melisson:2010}}	 	& + & + & + & + &  & + \\
  &{\small iPOJO~\cite{Escoffier:2007}}		& + & + & + & + &  & + \\
  \hline\hline
- \multirow{9}{8mm}{\begin{sideways}\parbox{30mm}{\small\centering  Domain-Specific Approaches}\end{sideways}} 
+ \multirow{9}{7mm}{\begin{sideways}\parbox{30mm}{\small\centering  Domain-Specific Approaches}\end{sideways}} 
  &{\small uMiddle~\cite{Nakazawa:2007}}		&  &  &  &  &  &  \\
  &{\small SOPRANO~\cite{Wolf:2010}}			&  &  & + & + &  &  \\
  &{\small Ga\"ia~\cite{Roman:2002}}			& + &  & + & + &  &  \\
@@ -795,10 +795,10 @@ Transversally, model-driven engineering methods and techniques come with a lot o
  &{\small WADL~\cite{Cervantes:2008}}		& + &  & + & + &  &  \\
  &{\small PervML~\cite{Munoz:2006a}}			& + & + & + & + & + &  \\
  &{\small AutoHome~\cite{Bourcier:2011}}		&  & + & + &  &  &  \\
- &{\small Niagara}							& + & + &  &  &  &  \\
+ &{\small WComp~\cite{Ferry:2011uq}}			& + &  & + & + &  & \\
+ &{\small Niagara~\cite{Tridium:2008}}		& + & + &  &  &  &  \\
  \hline
 \end{tabular}
-
 \caption{Summary of existing approaches}
 \label{tab:summaryOfApproaches}
 \end{table}
