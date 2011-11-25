@@ -95,7 +95,9 @@ Chapter~\ref{ch:detailsStrata} details each layer of this contribution.
 \label{ch:detailsStrata}
 
 
-Like a geologist, this chapter dissects the contribution layer by layer. For each stratum composing the proposal, a section gives details on the roles taken on by the layer, its achievements, and its interactions with other strata.
+Like a geologist, this chapter dissects the contribution layer by layer. For each stratum composing the proposal, a section gives details on the roles taken on by the layer, its achievements, and its interactions with other strata.\\
+
+The first section starts with the description of the Device Interoperability layer, which takes an essential role in the contribution since it enables heterogeneous connections. Section~\ref{sec:componentModel} then details the different concepts present in the component model, their interactions, and describes how the synchronization between component implementations and models is guaranteed. Section~\ref{sec:martAndReasoning} explains how the Model@Runtime and Reasoning layer takes advantage of the component model to offer a great flexibility and multiple points for checking the conformance. The runtime environment chose is briefly presented is section~\ref{sec:soaruntime}, while section~\ref{sec:wrappers} introduces the Wrappers layer.
 
 \section{Device Interoperability}
 
@@ -307,13 +309,13 @@ public class Timer extends AbstractComponent {
 	}
 
 	@Port(name = "stop")
-	public void stopTimer(Object o) {
+	public void stopTimer(Message m) {
 		if (timer != null) { timer.reset(); }
 		getPortByName("logger", MessagePort.class).process("Timer("+time+")::STOP");
 	}
 
 	@Ports({ @Port(name = "restart"), @Port(name = "start") })
-	public void restartTimer(Object o) {
+	public void restartTimer(Message m) {
 		if (timer != null) { timer.reset(); }
 		timer = new TimerThread();
 		timer.start();
@@ -406,6 +408,7 @@ To eliminate these two issues, the Model@Runtime approach and model checkers hav
 
 
 \section{Model@Runtime and Reasoning Engine}
+\label{sec:martAndReasoning}
 
 \begin{wrapfigure}{r}{60mm}
   \vspace{-5mm}
@@ -494,6 +497,7 @@ As previously explained, real commands for the migration are instantiated accord
 \newpage
 \section{Service-Oriented Runtime Architecture}
 \label{sec:soaruntime}
+
 \begin{wrapfigure}{r}{60mm}
   \vspace{-5mm}
   \includegraphics[width=60mm]{part2/pics/layers/SoaRt}
@@ -504,7 +508,7 @@ As previously explained, real commands for the migration are instantiated accord
 
 For the proposed approach to efficiently cope with dynamic evolutions, the underlying runtime environment is required to offer dynamic abilities. As explained in~\cite{Di-Nitto:2008}, the concept of service has emerged as a good candidate to cope with the dynamicity of adaptive systems. The adoption of this concept led to the development of technologies, standards, and methods to build service-based applications. Since the Service-Oriented paradigm insists on the pervasiveness of services, it naturally imposes service-based applications to properly handle this requirement. Indeed, services can appear and disappear at any time, and applications built upon these principles obviously have to take these constraints into account.\\
 
-The OSGi Alliance~\cite{OSGI:r4}, a 'consortium of technology innovators', has released a set of specifications that define a service-oriented platform~\cite{OSGI:r4}, and its common services. This Service-Oriented Runtime has been selected to support commands that require adding or removing component instances and types(binaries), during the execution.\\
+The OSGi Alliance~\cite{OSGI:r4}, a 'consortium of technology innovators', has released a set of specifications that define a service-oriented platform, and its common services. This Service-Oriented Runtime has been selected to support commands that require adding or removing component instances and types(binaries), during the execution.\\
 
 {\bf Dynamicity in OSGi}\\
 The OSGi kernel is a standard container-provider to build service-oriented software systems. It implements a cooperative model where applications can dynamically discover and use services, provided by other applications running inside the same kernel. It provides a continuous computing environment. Applications can be installed, started, stopped, updated, and uninstalled, without a system restart. It offers a remote management model for applications that can operate unattended or under the control of a platform operator. Finally it embeds an extensive security model, so that applications can run in a shielded environment. According to these specifications, an application is then divided into several bundles. A bundle is a library component in OSGi terms. It packages services that are logically related. It imports and exports Java packages, and offers or requires services. Services are implementations of Java interfaces.\\

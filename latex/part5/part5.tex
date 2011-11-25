@@ -205,22 +205,22 @@ From the S-Cube perspective, \enti{} can be considered for handling adaptations 
 
 
 
-
-\chapter{Scientific perspectives}
+\chapter{Perspectives}
+\section{In research}
 
 The contributions of this thesis leave some questions open, and have opened some doors. Therefore, the perspectives of this work aim at investigating and answering questions that have not been yet addressed, or go one step beyond into new uses of this contribution.
 
 
-\section{IDA, second phase}
+\subsection{IDA, second phase}
 Conclusions from the experimentation led in the context of the \gls{ida} project shaped a promising future for the use of such tools, in the AAL domain. Even if the maturity of \enti{} and the objective of the first phase of the project did not allow testing of \enti{} in a real deployment situation, the protagonists (industrialists, carers, social workers and elderly people) have shown an interest in the provision of customized solutions for each person.\\
 Currently, the second phase if the IDA project is being set up. Hopefully, it will be the moment for \enti{} to perform the last checks and to validate both the scalability and variability management, on real deployment.
 
 
-\section{End User Programming}
+\subsection{End User Programming}
 
 End User Programming~\cite{Ko:2011} relates to the ability for anybody to program something. For instance, when a user programs the hours of start and stop of the heating system, he is actually programming. In the context of the IDA project and following the idea that inhabitants must be able to keep control of things in their homes, end user programming sounds like a very promising, but yet challenging perspective.\\
 
-\subsection{Which description language ?}
+\subsubsection{Which description language ?}
 Software developers like to be able to use the keyboard only. A graphical user interface, with drag-and-drop interactions to create assemblies, will probably not meet the requirements of this kind of population. For them, a textual language seems to be the simplest thing.\\
 On the other hand, inhabitants do not all have skills in programming languages, and especially not elderly people. They would probably express their requirements for the behavior of the system in another way. The question is which one.\\
 
@@ -231,12 +231,12 @@ The validity of the behavior described is also challenging. End users may not ha
 The unique and universal language for describing how things have to behave will probably never exist. Because each user has a different kinship with technologies, systems should offer several edition tools, out of which the end user selects the handiest for him.
 
 
-\subsection{Fuzzy Logic and Learning Algorithms}
+\subsubsection{Fuzzy Logic and Learning Algorithms}
 
 In the hypothesis that people are able to describe a behavior of a function, how could they know about the limits of values? In other words, if a user is defining a behavior for the light, how could he know the minimum and maximum values that the light sensor can sense ?\\
 The fuzzy logic paradigm~\cite{Chauvel:2008,Mendel:2001} proposes to use terms and non-fixed values in decision algorithms. Indeed, a fixed value is never appropriate because a regulation value must be modifiable. This paradigm makes it possible to work with terms and rough values only, because thresholds are computed at runtime. During the execution, users can act on these thresholds by telling the system about good or bad situations. Quite close to ideas of artificial intelligence, this approach could be coupled with some learning mechanisms, to go a bit further and re-simplify description of an application behavior.
 
-\section{Distribution and Pervasiveness}
+\subsection{Distribution and Pervasiveness}
 
 The distribution of applications brings several interesting facilities, such as load balancing, or redundancy to cope with failures of system elements. This question has not been properly addressed in this thesis, but may rapidly become a limitation. Moreover, working with devices brings \enti{} close to the ideas of pervasive computing. In this domain, objects' interactions are controlled by invisible nested software systems. Invisible for users, these systems have to self-reconfigure to take into account changes in their environments.\\
 
@@ -244,12 +244,12 @@ In the perspective of a large-scale deployment, distribution and pervasiveness c
 This approach could foster the distribution of \enti{} on several nodes, help to prevent system failures, balance the load of resource-consuming components, or ease the connection of smart devices.
 
 
-\section{Architecture Synthesis}
+\subsection{Architecture Synthesis}
 \label{sec:archiSynth}
 
 The architecture synthesis goal is to assist in the creation of an application. Feature diagrams and automatic derivations into products, templates and wizards guiding the developer through the steps of product design, are two examples of tools enabling the synthesis of architectures.
 
-\subsection{Dynamic Software Product Lines for the management of variability}
+\subsubsection{Dynamic Software Product Lines for the management of variability}
 
 Not really addressed in the contribution, nor experimented in the validation, the management of variability in the domain of AAL and Home Automation is still a real problem. Luckily, the omnipresence of the model in all steps of the application-making process enables the use of well-known modeling tools to help in handling variability.\\
 
@@ -259,7 +259,7 @@ A product line consists of a base product that can be augmented with options sel
 Dynamically-adaptive software systems are able to dynamically evolve after their creation, and \gls{spl}s are no longer sufficient to help in handling the description of things that can be changed at runtime. To cope with this issue, \gls{dspl} have been proposed. They enable the description of variation points during the execution of an application and make it possible to identify the exchangeable elements. The work carried out by Carlos Cetina et al. in this domain, presented in \cite{Cetina:2009}, is very close to what we want to achieve and reflects our future work.\\
 
 
-\subsection{How can the behavior be descibed?}
+\subsubsection{How can the behavior be descibed?}
 
 In \enti{}, mapping components to leaf features in the \gls{dspl} makes it very simple to describe the desired configuration of the software at a high level of abstraction. Nevertheless, components in \enti{} are developed with a strong effort to respect the close entity principle and they do not know, or depend on each other. As a consequence, the \gls{dspl} can only support the description of the number of components, their types and the different options in the case of reconfiguration; in short, the structure of the assembly. Nowhere can the interactions between components be specified.\\
 
@@ -267,7 +267,7 @@ While still in its infancy, we proposed in~\cite{Istoan09a} an approach combinin
 Cassou et al. recently presented another approach to this problem of describing interactions. In \cite{Cassou:2011}, they introduce a "behavioral contract". These contracts are aimed at offering means to express the set of allowed interactions between components and describe both data and control-flow constraints. The integration of this idea with \enti{} may be studied in future work.
 
 
-\section{Kevoree}
+\subsection{Kevoree}
 
 \enti{}, as an achievement of this thesis, has been highlighted as an interesting approach to address some identical issues in other domains.\\
 
@@ -281,19 +281,19 @@ The development of Kevoree is actually part of the work in progress in the conte
 {\bf Arduino} is an open-source electronics prototyping platform based on flexible, easy-to-use hardware and software. It is intended for artists, designers, hobbyists and anyone interested in creating interactive objects or environments, according to the manufacturer's web page. Recent developments shaped the idea of using Kevoree and the component model to ease sketches and the deployment of applications on Arduino platforms.
 
 
-\section{Open Control/Command Operating System}
+\subsection{Open Control/Command Operating System}
 
 The component model of this contribution has been designed to allow for the connection of heterogeneous components. Inspired by electronics, the elements to be modeled and connected just need to be expressed in terms of components with inputs and outputs. Since almost all automated systems can be expressed this way, almost all systems can be modeled using the component model proposed in this contribution.\\
 The independence of the model in relation to real devices-specificities enables the description of any application/system. Thus, \enti{} could take on the role of a universal control/command operating system, since the only difficult point is to develop the driver in charge of the interface between the real world and the component level. If a driver for an application can be created, \enti{} can help in controlling it.
 
 
-\chapter{Industrial perspectives}
+\section{In industry}
 \label{ch:industrialPerspectives}
 
 The contribution of this thesis interests several audiences. The general public is curious to know about how computer science can help in improving elderly people's quality of life at home, since \enti{} was initially designed for the Ambient Assisted Living context. Everyone has or has had a family member who could have been helped by such a proposal. Industrialists are more interested in the good properties of the contribution. Since device manufacturers are familiar with electronic components, they easily understand how this component model works.\\
 Starting from the validation scenario, in just 3 years a demonstration of \enti{} has been set up and presented in more than 10 public and scientific events. This demonstration stressed the adaptation aspect of the contribution in an AAL context.
 
-\section{Public events}
+\subsection{Public events}
 
 Public events are an opportunity for the general public to discover what issues scientists are trying to resolve and how they do it. On the other hand, these meetings are also an opportunity for scientists to collect feedback on their work, from uninitiated persons. Uninitiated, in the sense that they are thinking about the problem for the first time. The questions asked are often very interesting, prompting you to step back from the details and to consider the proposal from a more global view.\\
 
@@ -316,7 +316,7 @@ Public presentations are very good opportunities to sense how the contribution e
 
 \enti{} has also been used as support for a demonstration called "{\it Leveraging Models From Design-time to Runtime. A Live Demo}" described in\cite{Morin09e}.
 
-\section{Industrial perspectives}
+\subsection{Industrial perspectives}
 
 The success of \enti{} has generated some industrial contacts. Several companies were interested in the abilities of this software to adapt and evolve at runtime. Most of them, close to the home automation domain, saw in \enti{} a great opportunity to enrich their products. But \enti{} was just a proof of concept, a prototype of research not ready to be deployed in the industry. This is partly the reason why \enti{} was not selected to be deployed in homes, in the IDA project.\\
 
