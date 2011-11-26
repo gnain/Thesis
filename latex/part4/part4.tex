@@ -376,26 +376,3 @@ An experimentation using real devices was set up by a collaborative work of the 
 \enti{} passed the main requirements highlighted by the scenario and required for such systems to be deployed. This validation comfort the idea of making \enti{} an integration platforms to offer customized solutions for each person's needs.\\
 Some limitations due to the lack of real and large scale deployment have been identified. These limitations will probably be addressed by the project of the company in charge of promoting this technology in the industry.
 
-
-
-\section{Implementation Metrics}
-
-This section provides some lines of code metrics of Kevoree and EnTiMidd. These metics have been measured on Kevoree 1.5.0-SNAPSHOT and EnTiMid 3.0.0-SNAPSHOT on the 23rd November 2011.\\
-
-\begin{tabular}{l||c|c|c|c|c}
-Project & Scala & Java & Total & Part & Value \\
-\hline \hline
-Kevoree-Core & 8143 & 344 & 8487 & 11,54\% & 979,3 \\
-Kevoree-Tools & 8483 & 6255 & 14738 & 22,22\% & 3274,65 \\
-Kevoree-Extra(ecore) & 1275 & 126 & 1401 & 50\% & 700,5 \\
-\hline \hline
-EnTiMid-Core & 0 & 445 & 445 & 85\% & 378,25 \\
-EnTiMid-Tools & 82 & 315 & 3197 & 75\% & 2397,75 \\
-EnTiMid-Library & 0 & 2065 & 2065 & 80\% & 1652 \\
-EnTiMid-Extra & 0 & 1091 & 1091 & 85\% & 927,35 \\
-\end{tabular}\\
-\\
-
-As previously said, Kevoree can be seen as a generalization of EnTiMid. During the extraction, a deep refactoring have been realized to allow for future extensions.\\
-EnTiMid has been specialized to address the domain of home automation. Thus, the most important par of development were paid in creating component libraries and extra APIs wrapping. For demonstration purposes, several additional tools had also been realized.
-

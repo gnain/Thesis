@@ -11,7 +11,8 @@ Sir Robert Baden-Powell
 \vspace{2cm}
 
 The study of the state-of-the-art in software engineering has highlighted the lack of a software solution to address all requirements identified in the context of home automation for Ambient Assisted Living. According to this observation, the goal of this thesis is to fill this gap by providing sucha tool.\\
-This section presents the achievements of this thesis. While the first chapter gives information about some central themes that drove this work, the remainder of the section details the contribution.
+
+This section presents the achievements of this thesis. While the first chapter gives information about some central themes that drove this work, chapter~\ref{ch:detailsStrata} details the contribution. Then chapter~\ref{ch:outcomes} brings some information about the implementation and places the contribution in a classification framework.
 
 \chapter{Contribution}
 
@@ -443,6 +444,11 @@ To eliminate these two issues, the Model@Runtime approach and model checkers hav
 The {\it Component Model} layer provides a level of abstraction from the implementation specificities. It offers a unified model view of components and their constraints and enables the creation of management tools. Reasoning engines, checkers, and models@runtime abilities can be used to ease the creation of component-based applications.\\
 The first requirement targets the validation of assemblies, prior to their real deployment. This checking step is described in section~\ref{subsec:check_to_validate}. Section~\ref{subsec:modelatruntime} presents an overview of the use made of Models@Runtime techniques in this approach.
 
+\begin{figure}[h!]
+	\includegraphics[width=\textwidth]{part2/pics/ModelCheck.pdf}
+	\caption{Electronic Parallel: Simulation}
+  	\label{fig:elecSimulation}
+\end{figure}
 
 \subsection{Check to validate}
 \label{subsec:check_to_validate}
@@ -450,13 +456,6 @@ The first requirement targets the validation of assemblies, prior to their real 
 In electronics, the components' assembly has to be approved. Its conformance in relation to components and applications-specific constraints has to be guaranteed. This validation prevents assemblies from having any computable damage. This conformance check is often carried out by simulations, based on components' specifications described in their documentation. Figure~\ref{fig:elecSimulation} shows once again the parallel between the electronic approach and ours, where electronic simulations are replaced by model checking in our context.\\
 
 \begin{figure}[h!]
-	\includegraphics[width=\textwidth]{part2/pics/ModelCheck.pdf}
-	\caption{Electronic Parallel: Simulation}
-  	\label{fig:elecSimulation}
-\end{figure}
-
-In a classical software engineering process, conformance checking is done at 1) design time by the developer, 2) compilation time automatically, and 3) by running tests on the application built. The modeling approach offers a way to perform more precise checks, targeting more specific concerns, at several moments between the design and deployment phases. Figure~\ref{fig:checkPoints} displays the different moments where checks can be performed and illustrates what can be checked at each moment. These steps are detailed in the following paragraphs.
-\begin{figure}
 \centering
 \includegraphics[width=.8\textwidth]{part2/pics/CheckPositions.pdf}
 \caption{Checkpoint positions in the assembly deployment chain}
@@ -464,11 +463,16 @@ In a classical software engineering process, conformance checking is done at 1) 
 \end{figure}
 
 
+
+In a classical software engineering process, conformance checking is done at 1) design time by the developer, 2) compilation time automatically, and 3) by running tests on the application built. The modeling approach offers a way to perform more precise checks, targeting more specific concerns, at several moments between the design and deployment phases. Figure~\ref{fig:checkPoints} displays the different moments where checks can be performed and illustrates what can be checked at each moment. These steps are detailed in the following paragraphs.
+
+\vspace{0.75cm}
 \begin{enumerate}
 \item {\bf Developer's actions}\\
-The assembly tool can monitor developers' actions. During the design phase, checkers can verify that only authorized operations are executed by the developer. When an inappropriate action is carried out, the triggering of warnings and errors can improve the development process. Thanks to this information, developers can immediately correct their code and learn from their mistakes. The earlier errors are detected and corrections made, the more the impact on the global solution is reduced. Also, developers' profiles could be created and associated with different checking policies according to the developers' expertise. This provides a fine-grained checking process for the design of applications.
+The assembly tool can monitor developers' actions. During the design phase, checkers can verify that only authorized operations are executed by the developer. When an inappropriate action is carried out, the triggering of warnings and errors can improve the development process. Thanks to this information, developers can immediately correct their code and learn from their mistakes. The earlier errors are detected and corrections made, the more the impact on the global solution is reduced. Also, developers' profiles could be created and associated with different checking policies according to the developers' expertise. This provides a fine-grained checking process for the design of applications.\\
+Listing~\ref{fig:checkDevAct} illustrates this by checking that for each channel, all connected ports are of type Service, or Message, but not both.
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \begin{lstlisting}[caption=Example checking developpers' actions,label=fig:checkDevAct,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
 def checkBindingsHomogeneity(model:ContainerRoot)
@@ -496,14 +500,17 @@ def checkBindingsHomogeneity(model:ContainerRoot)
   }
  }
 }
-\end{lstlisting} 
+\end{lstlisting}
+\vspace{-0,4cm}
 \end{figure}
 
+\vspace{0.50cm}
+
 \item {\bf Assembly constraints}\\
-The structure of an assembly can be constrained by rules, due to runtime constraints, or due to the framework used. These rules are neither specific to the developer, nor to the targeted business. A general policy could impose assemblies to be composed with at least two communication components. This constraint aims at keeping continuity in the communication service in case of failure. Valuable for all applications created by the company, this rule is shared by all software development projects.
+The structure of an assembly can be constrained by rules, due to runtime constraints, or due to the framework used. These rules are neither specific to the developer, nor to the targeted business. A general policy could impose assemblies to be composed with at least two communication components. This constraint aims at keeping continuity in the communication service in case of failure. Valuable for all applications created by the company, this rule is shared by all software development projects.\\
+The method presented in Listing~\ref{fig:checkAssembly} checks that for each component instance, all mandatory ports are connected to a channel.
 
-
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \begin{lstlisting}[caption=Example checking assembly constraints,label=fig:checkAssembly,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
 def checkMandatoryConnections(model: ContainerRoot)
@@ -521,27 +528,46 @@ def checkMandatoryConnections(model: ContainerRoot)
     violations = violations ++ List(concreteViolation)
 }}}}
 \end{lstlisting} 
+\vspace{-0,3cm}
 \end{figure}
 
-
+%\vspace{1cm}
 
 \item {\bf Business Rules}\\
-An application created to control a plane has different constraints compared to a watering management system. Each application domain can require that special rules are considered. This checkpoint is placed just before the model deployment. The validation of conformance at this moment avoids the sending of corrupted models to the runtime.
+An application created to control a plane has different constraints compared to a watering management system. Each application domain can require that special rules are considered. This checkpoint is placed just before the model deployment. The validation of conformance at this moment avoids the sending of corrupted models to the runtime.\\
+The rule presented in Listing~\ref{fig:checkBusiness} verifies that for each channel, all connected ports have the same name.
 
-\begin{figure}
+\begin{figure}[h!]
+\vspace{-0,3cm}
 \centering
-\begin{lstlisting}[caption=Example checking business pre-deploy  constraints,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
-
+\begin{lstlisting}[caption=Example checking identical port names,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+def checkBindingsHomogeneity(model:ContainerRoot)
+	: java.util.List[CheckerViolation]={
+ model.getChannels.foreach { channel =>
+  val bindingsOnChannel = model.getBindings.filter(mb =>
+   mb.getChannels.equals(channel)
+  )
+  var portName = ""
+  bindingsOnChannel.foreach { binding =>
+   if(portName.equals("") {
+    portName = binding.getPort.getPortTypeRef.getName
+   }else {
+    if(!binding.getPort.getPortTypeRef.getName.equals(portName)) {
+  	 val violation = new CheckerViolation
+     violation.setMessage("Connection not authorized.")
+     violations = violations ++ List(violation)
+}}}}}
 \end{lstlisting} 
+\vspace{-0,4cm}
 \end{figure}
 
 \item {\bf Platform Rules}\\
 A platform is a system composed of both software and hardware. The composition of the execution platform may impact the development, or deployment of a component-based application. The role of this check is to verify that all constraints inherent to the platform choice are respected. As checks are performed at the model level, they can be realized by the runtime platform itself, with no consequence on the running application. For instance, a model can be rejected if one of the components requires a serial connection, and the runtime hardware of the platform has none.\\
-Modeling the platform resources could enable to move these checks to before deployment and thus gain time.
+The Listing~\ref{fig:platformChecks} ensures no channel is using the SerialConnectionChannel, probably because the hardware does not have any serial port. Modeling the platform resources could enable to move these checks to before deployment and thus gain time.
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
-\begin{lstlisting}[caption=Example checking pre-deploy constraints,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+\begin{lstlisting}[caption=Example checking pre-deploy constraints,label=fig:platformChecks,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
 def serialConnectionCheck(model:ContainerRoot)
 	:java.lang.util.List[]={
  model.getChannels.exists { channel =>
@@ -559,23 +585,14 @@ def serialConnectionCheck(model:ContainerRoot)
  }
 }
 \end{lstlisting} 
+\vspace{-0,3cm}
 \end{figure}
 
 \item {\bf Check deployment commands}\\
-The last step of checking consists in the first step of Models@Runtime mechanisms. As explained in section~\ref{subsec:modelatruntime}, the deployment of a component assembly is split into several commands. This last verification ensures that all commands are executable before running the sequence.
+If the model of the assembly successfully passes all checkpoints, it is ready for deployment. The last step of checking consists in the first step of Models@Runtime mechanisms. The deployment of a component assembly is split into several commands. This last verification ensures that all commands are executable before running the sequence. This phase is handled by the Models@Runtime engine. Its job consists in (1) defining the best way to go from the current system assembly to the new assembly received, and (2) supervising the migration. This is explained in section~\ref{subsec:modelatruntime}.
 
-\begin{figure}
-\centering
-\begin{lstlisting}[caption=Example checking business pre-deploy  constraints,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
-
-\end{lstlisting} 
-\end{figure}
-
-
+ 
 \end{enumerate}
-
-If the model of the assembly successfully passes all checkpoints, it is ready for deployment. This phase is handled by the Models@Runtime engine. Its job consists in (1) defining the best way to go from the current system assembly to the new assembly received, and (2) supervising the migration. This is explained in section~\ref{subsec:modelatruntime}.
-
 
 
 
@@ -673,3 +690,180 @@ A wrapper is created for each application level protocol. Just as for devices' d
 The model used by the Model@Runtime engine has been augmented with the introduction of the component model described in section~\ref{sec:componentModel}.\\
 The service-oriented architecture of the runtime makes it possible to cope with evolutions and adaptations, since bundles can be installed and updated with no need to restart the system. These facilities are exploited by the Model@Runtime layer, which comes with tools and methods to address the evolutions, variability, adaptations and safety of the application. However, these properties could not have been used without the creation of a new component model inspired by electronic components. This component model improves flexibility and enables the connection of heterogeneous components, while keeping a high level of reliability thanks to checkers. The Device Interoperability and Wrappers layers provide abstractions of manufacturers' specificities and free publications on application level protocols respectively, to promote interoperability and openness.
 
+
+
+\chapter{Outcomes}
+\label{ch:outcomes}
+
+This chapter aims at providing a bit more details about the outcomes of this thesis in terms of implementation and tools. The first section gives quite general information about the implementation of this component model and provides some metrics. The second and last section of this chapter classifies the component model according to the classification proposed by Crnkovic in~\cite{Crnkovic_1374:2007}.
+
+\section{Implementation}
+
+The ideas presented in this thesis have been tested and improved in several situations and contexts thanks to an implementation.\\
+
+{\bf EnTiMid} has grouped together all separated layers to provide a first running implementation of the component model and tools. Because of the context, EnTiMid target the creation and realization of software applications in the domain of Home Automation. However, ideas presented in this thesis are more general and applicable in other domains such as Machine-To-Machine or automotive industry.\\
+The arrival of a new PhD student in the team incited to rethought and rebuild the software solution.\\
+
+{\bf Kevoree} has inspired and integrated ideas developed in this thesis and in EnTiMid, to create a more general purpose software development environment. This generalization enables the use of these ideas in several projects and implementation in the team. It also allows for future specializations or extensions of this work. As for EnTiMid, it has been re-factored to specialize Kevoree for a use in the domain of HomeAutomation.\\
+
+{\bf Metrics}\\
+The table~\ref{table:metrics} provides some lines of code metrics of Kevoree and EnTiMidd. These metrics have been measured on Kevoree 1.5.0-SNAPSHOT and EnTiMid 3.0.0-SNAPSHOT on the 23rd November 2011.\\
+\begin{table}
+\centering
+\begin{tabular}{l||c|c|c|c|c}
+Project & Scala & Java & Total & Part & Value \\
+\hline \hline
+Kevoree-Core & 8143 & 344 & 8487 & 11,54\% & 979,3 \\
+Kevoree-Tools & 8483 & 6255 & 14738 & 22,22\% & 3274,65 \\
+Kevoree-Extra(ecore) & 1275 & 126 & 1401 & 50\% & 700,5 \\
+\hline \hline
+EnTiMid-Core & 0 & 445 & 445 & 85\% & 378,25 \\
+EnTiMid-Tools & 82 & 315 & 3197 & 75\% & 2397,75 \\
+EnTiMid-Library & 0 & 2065 & 2065 & 80\% & 1652 \\
+EnTiMid-Extra & 0 & 1091 & 1091 & 85\% & 927,35 \\
+\end{tabular}\\
+\caption{Lines of code metrics of Kevoree and EnTiMid}
+\label{table:metrics}
+\end{table}
+\vspace{-0.2cm}
+
+Kevoree and EnTiMid have been implemented in mixed Java and Scala languages. The table provides an indication of my participation in the different projects of the implementation. The complement has been realized in collaboration with other PhD students of the team.\\
+The core of Kevoree embeds the implementation of the meta-model, a loader, a serializer, a cloner and some utility classes grouped in a framework used for both runtime management and design of components.\\
+Kevoree-Tools contains a graphical editor for components and assemblies, model and code synchronization tools and the definition of a scripting language to ease the management of models.\\
+
+Since, Kevoree can be seen as a generalization of EnTiMid, the most important part of development in EnTiMid was paid in creating component libraries and extra APIs wrapping, specialized for home automation technologies and devices. For demonstration purposes, several additional tools had also been realized.
+
+\section{Classification}
+
+Crnkovic proposed in~\cite{Crnkovic_1374:2007} a classification framework "to increase the understanding of concepts and easier differentiate component models". This section aims at classifying the component model of this thesis according to this classification. Four dimensions are considered in~\cite{Crnkovic_1374:2007}. Each dimension is presented in a separated subsection.\\
+
+The tables presented here have been extracted (for existing component models) from the Crnkovic classification, and completed to integrate EnTiMid. The component models selected for this extraction are also present in the state-of-the-art section.
+\vspace{1cm}
+\subsection{Lifecycle}
+~\vspace{-0,5cm}
+\begin{table}[h!]
+\centering
+{\scriptsize 
+\begin{tabular}{|>{\centering}m{.12\textwidth}||>{\centering}m{.20\textwidth}|>{\centering}m{.20\textwidth}|>{\centering}m{.16\textwidth}|>{\centering\arraybackslash}m{.16\textwidth}|}
+\hline
+Component Models & Modeling & Implementation & Packaging & Deployment \\
+\hline
+EJB & N/A & Java & EJB-Jar files & At run-time \\
+\hline
+Fractal & ADL-Like Language(Fractal ADL, Fractal IDL)\\ Annotations(Fractlet) & Java(in Julia, Aokell)\\ C/C++(in Think)\\ .Net lang(in FracNet) & File system based Repository & At run-time \\
+\hline
+OSGi & N/A & Java & Jar-files (bundles) & At run-time and at compilation \\
+\hline\hline
+EnTiMid & Graphical and Textual ADL, Annotations(CDL) & Java, Scala & Jar-files(bundles) Repositories & At run-time and at compilation \\
+\hline
+\end{tabular}
+}
+\caption{The Lifecycle dimension}
+\label{tabl:classifLifeycle}
+\end{table}
+\vspace{-0,2cm}
+
+EnTiMid proposes several tools for editing components and applications. Developments can be done in Java and/or Scala, and deployments (based on OSGi mechanisms) are realized using Jar files and repositories. This deployment can be done while the system is running.
+
+\subsection{Constructs}
+~
+\vspace{-0,5cm}
+\begin{table}[h!]
+\centering
+{\scriptsize 
+\begin{tabular}{|>{\centering}m{.12\textwidth}|| >{\centering}m{.16\textwidth}| >{\centering}m{.17\textwidth}| >{\centering}m{.12\textwidth}| >{\centering}m{.14\textwidth}| >{\centering\arraybackslash}m{.11\textwidth}|}
+\hline
+Component Models & Interface type & Provides/Require distinction & Distinctive Features & Interface Language & Interface Levels \\
+\hline
+EJB & Operation-based & No & N/A & Java Programming Language + Annotations & Syntactic \\
+\hline
+Fractal & Operation-based & Yes & Component Interface, Control Interface & IDL, Fractal ADL, Java, C, Behavioral Protocol & Syntactic, Behavior \\
+\hline
+OSGi & Operation-based & Yes & Dynamic Interfaces & Java & Syntactic \\
+\hline\hline
+EnTiMid & Port-based & Yes & Types Specified in Interfaces & Java, Annotation, other & Syntactic, Semantic \\
+\hline
+\end{tabular}
+}
+\caption{The Constructs dimension - Interface Specifications}
+\label{table:classifConstIface}
+\end{table}
+
+Each port in EnTiMid can be specified independently, making interfaces types port-based. Naturally, the model differentiates between provided and required ports. The types of ports are specified in the component model and their parameters also, which is a particularity. The language to describe the interface can be Java(for services ports) or just annotations (for message ports). In case of message ports, they handle the semantic of the call; otherwise it is a syntactic interface level.
+
+\begin{table}[h!]
+\centering
+{\scriptsize
+\begin{tabular}{|>{\centering}m{.12\textwidth}||>{\centering}m{.28\textwidth}|>{\centering}m{.23\textwidth}|>{\centering}m{.10\textwidth}|>{\centering\arraybackslash}m{.12\textwidth}|}
+\hline
+\multirow{2}{.13\textwidth}{\centering Component Models} & \multirow{2}{*}{Interaction Styles} & \multirow{2}{*}{Communication Type} & \multicolumn{2}{c|}{Binding Type} \\
+\cline{4-5}
+& & & Exogenous & Hierarchical \\
+\hline
+EJB & Request Response & Synchronous, Asynchronous & No & No \\
+\hline
+Fractal & Multiple Interaction Styles & Synchronous, Asynchronous & Yes & Delegation, Aggregation \\
+\hline
+OSGi & Request Response, Triggering & Synchronous & No & No \\
+\hline\hline
+EnTiMid & Multiple Interaction Styles & Synchronous, Asynchronous & Yes & Delegation \\
+\hline
+\end{tabular}
+}
+\caption{The Constructs dimension - Interaction}
+\label{table:classifConstInteract}
+\vspace{-0,2cm}
+\end{table}
+
+
+Interaction style between components depends on the channel used. The channel supports the interaction and can act as a blocking service call, as a trigger or even with some callback mechanisms. Thus communications can be synchronous or asynchronous according to the channel chosen. Bindings are made explicit by the concept of channels. In case of a composition, the behavior of the binding is dependent of the implementation of the composite component. As of today, the unique composition mechanism available in EnTiMid is the inheritance, and can be considered as a delegation in this case.
+
+\subsection{Extra-Functional Properties}
+
+\begin{table}[h!]
+\centering
+{\scriptsize
+\begin{tabular}{|>{\centering}m{.12\textwidth}||>{\centering}m{.30\textwidth}|>{\centering}m{.28\textwidth}|>{\centering\arraybackslash}m{.13\textwidth}|}
+\hline
+Component Models & Management of EFP & Properties Specification & Composition and Analysis support \\
+\hline
+EJB & Exogenous System wide(D) & N/A & N/A \\
+\hline
+Fractal & Exogenous per collaboration(C) & Ability to add properties (by adding "property" controllers) & N/A \\
+\hline
+OSGi & Endogenous per collaboration(A) & N/A & N/A \\
+\hline\hline
+EnTiMid & Exogenous System wide(D) & Metrics<key,value> values updated at run-time & Handled by pluggable reasoners \\
+\hline
+\end{tabular}
+}
+\caption{The Extra-Functional Properties dimension}
+\label{table:classifProp}
+\end{table}
+
+Working with a model at run-time makes it possible to dynamically get the value of a metric on a running component. Metrics are specified on and updated by components in the model. Theses metrics are <key,value> pairs and can represent any interesting data on the component behavior. Their analysis can be performed locally or remotely by reasoner capable of making a decision from a given model extracted from the running system.
+
+\subsection{Domains}
+
+\begin{table}[h!]
+\centering
+{\scriptsize
+\begin{tabular}{|>{\centering}m{.13\textwidth}||c|c|c|}
+\hline
+Component Models & General Purpose & Specialized & Generative \\
+\hline
+EJB & X & & \\
+\hline
+Fractal & X & & X \\
+\hline
+OSGi & X & & \\
+\hline\hline
+EnTiMid & & X & X \\
+\hline
+\end{tabular}
+}
+\caption{The Domains dimension}
+\label{table:classifDomains}
+\end{table}
+
+Dedicated to the domain of Home Automation and \gls{aal}, EnTiMid is clearly specialized. Kevoree, on its side, can be considered as more generic.

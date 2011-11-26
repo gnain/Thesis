@@ -439,7 +439,7 @@ In OSGi, relations between bundles are never made explicit. Worse still, relatio
 The table below is completed for each approach or tool, and presents strengths and weaknesses in a synthetic way. Individual tables are merged altogether in section~\ref{ch:summary} as a synthesis. \\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   & + & + & + &  & \\ 
   \hline
@@ -460,7 +460,7 @@ Besides its good properties, there is no clear separation between types and inst
 This lack of clarity in the component interdependencies makes it impossible to dynamically replace components and/or reason about the system's state. This approach do not target the resolution of variability management or safety and security issues.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + & + &  & + &  & \\ 
   \hline
@@ -490,7 +490,7 @@ The clear separation of types and instances is a plus. Runtime creation of insta
 If the typing of ports is helpful to guarantee the consistency of an application model, the typing at the implementation level can act against the interoperability property, but enforce the safety of the system. Bindings have a clear semantic, but cannot use other communication links than the one they have been designed to use (Java RMI in this case). It is a limitation. The adaptation policies (in case of binding loss or component arrival for instance) are hard coded and distributed in each instance. Thus they cannot be easily changed at runtime.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   &  & + & + &  & + \\ 
   \hline
@@ -506,7 +506,7 @@ A configuration describes an assembly of components. It handles the model of the
 The clear separation between component development and assembly creation (for a particular application) is the key to success. Composition mechanisms are also welcome to cope with diversity management and promote the reuse of existing components to create value-added compound components. Here again, connection ports are typed and should conform to a specific interface. This is an advantage for securing the software but may cause problems in future evolutions, in terms of interoperability. Koala introduced modules to handle specific communications between components and act like a proxy. They could have gone a bit further by systematically using modules to specify each connection. This information could help in solving issues, or in specifying the system more precisely.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   &  &  & + & + & + \\ 
   \hline
@@ -527,7 +527,7 @@ This lack of an explicit and independent reflection model imposes that most of t
 In addition, component models such as Fractal are slightly opaque with respect to the outside world, making openness and reuse by third party applications complicated if not anticipated in advance. Lastly, the dynamicity of an application running over Fractal is compromised, because the deployment of new component' types can not be carried out without restarting.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   &  & + &  &  &  \\ 
   \hline
@@ -560,7 +560,7 @@ Composite components can be used as classical service components, which simplifi
 SCA is a standard, a set of definitions describing how such a system should behave. Thus, it imposes certain types of implementation, in order to guarantee the presence of mechanisms for openness, evolution or remote control.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   & + &  & + &  & + \\ 
   \hline
@@ -575,7 +575,7 @@ The FraSCAti script tool enables reconfiguration and adaptation of component ass
 The variability of FraSCAti itself is managed using a Software Product Line(SPL). Each runtime instance of FraSCAti is a product of the SPL. Thus, features of FraSCAti can be deployed on demand. However, this variability management concerns only the internal features of FraSCAti, and an external tool is still required to handle the variability of applications made with FraSCAti.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + & + &  & + &  & + \\ 
   \hline
@@ -586,7 +586,7 @@ iPOJO~\cite{Escoffier:2007} is the Apache service-oriented component runtime bui
 The iPOJO component model focus on providing management facilities for pervasive applications based on component model, and a service-oriented runtime. This general purpose component model for service oriented architectures provides a solid base for domain specific extensions and developments.
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   & + & + & + &  & \\ 
   \hline
@@ -620,7 +620,7 @@ Nakazawa et al propose a framework that bridges remote smart spaces called D-uMi
 D-uMiddle brings a solution for connecting remote smart spaces, with no need for a developer to care about transportation. Remote control of equipment is thus made possible for free. Nevertheless, it does not supply tools to handle variability, adaptation or evolution of a deployed system, and nothing is specified about the securization of the connection.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   &  &  &  &  & \\ 
   \hline
@@ -632,7 +632,7 @@ SOPRANO (Service-Oriented Programmable Smart Environments for Older Europeans) w
 OpenAAL proposes a solution to efficiently built applications ready to evolve with needs and able to adapt to changes in context. However, no attention is paid to the variability management, remote control or interoperability of devices. Nothing is said about safety of security.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   &  & + & + &  & \\ 
   \hline
@@ -647,7 +647,7 @@ It has been implemented in CORBA and can be ported to other communication middle
 The interoperability of services and devices is ensured by the common set of basic services. Adaptations and evolutions are made possible by the Component Management Core of Ga\"ia which can dynamically load, transfer, create or destroy components or applications. Remote control is made available by the underlying CORBA platform, in the implementation described. Variability management of components or applications, safety and security, and openness of the solution are not targeted by this work.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + &  & + & + &  &  \\ 
   \hline
@@ -662,7 +662,7 @@ This tool suite has been augmented with Pantagruel\footnote{https://pantagruel.b
 These tools meet the demands of a tool chain to develop pervasive applications from a high-level description. Code generation and the simulation environment are very good tools to improve the efficiency of the development process and the reliability of the code, as much as facing the variability of solutions. Designed to ease the development of pervasive applications, these tools do not address issues about variability management, application evolutions or adaptations.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + & + &  &  & + & + \\ 
   \hline
@@ -676,7 +676,7 @@ Habitation is a methodology, a set of tools to address the specific requirements
 The approach proposed by Habitation is very promising and sounds helpful in providing non-expert users with tools having a sufficient level of abstraction to be user friendly. However, Habitation only addresses pre-deployment design issues and does not deal with issues such as evolutions, adaptations and safety and security issues. Such as DiaSuite, Habitation remains an good approach to face the variability issue, while improving the efficiency of the development process.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + &  &  &  & + & \\ 
   \hline
@@ -690,7 +690,7 @@ WADL has been implemented on OSGi(see section~\ref{subsec:osgi}) and relies on t
 WADL provides a tool to explicit the architecture of dynamic applications, which is often difficult to extract because of the runtime evolutions. By nature, this approach copes with the adaptation requirement. The interoperability is realized by the use of a Producer/Consumer pattern. Evolution is supported by the filters that can be flexible enough to admit future evolutions. Issues on openness, variability management and safety and security are not treated in this approach.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + &  & + & + &  & \\ 
   \hline
@@ -706,7 +706,7 @@ In \cite{Serral:2010a}, authors explain how they introduced system evolution cap
 PervML offers a suitable solution. Developed to be executed on an OSGi platform, it naturally offers adaptation, evolution, openness and interoperability mechanisms. As presented in \cite{Cetina:2009}, PervML also targets the variability management issue. So far, a drawback of this approach is that people have to be familiar with UML to model a pervasive application. Also, the use of a pre-defined set of service interfaces described in the framework may become a barrier for the flexibility of the solution. Safety and security issues are not addressed by this work.\\
 \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + & + & + & + & + & \\ 
   \hline
@@ -723,7 +723,7 @@ AutoHome makes it possible to include, within the application itself, specialize
 However, this solution does not seem to offer means for variability management, or interoperability between components, and does not consider safety or security aspects.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
   & + & + & + &  & \\ 
   \hline
@@ -737,7 +737,7 @@ WComp\cite{Ferry:2011uq,Tigli:2009} is a component model designed to support ubi
 WComp offers several mechanism for adaptations, evolutions and interoperability,  and does not seem to address openness, variability management and safety or security concerns. Finally, it looks like the type system of the components rely on the implementation language type system, which can limit the reuse and interoperability.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + &  & + & + &  & \\ 
   \hline
@@ -752,7 +752,7 @@ These components share the foundation for building applications to manage and co
 NiagaraAX eases the creation of applications integrating services and devices, by providing a framework for the development of drivers and applications. Built as a service-oriented architecture, this framework promotes the interoperability of devices and openness of solutions through Internet-based communications. NiagaraAX does not target issues about adaptations of the software or its evolution at runtime. Safety and security are not part of this work.\\
  \\
 \begin{tabular}{ >{\centering}m{.13\textwidth}| >{\centering}m{.09\textwidth} >{\centering}m{.12\textwidth}| >{\centering}m{.10\textwidth} >{\centering}m{.20\textwidth}| >{\centering\arraybackslash}m{.15\textwidth}}
-{\tiny Interoperability} & {\tiny Openness} & {\tiny Adaptation} & {\tiny Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
+{\tiny Interoperability} & {\tiny Openness} & {\tiny Dynamic Adaptation} & {\tiny Static Evolution} & {\tiny Variability Management} & {\tiny Safety \& Security}\\
  \hline
  + & + &  &  &  & \\ 
   \hline
