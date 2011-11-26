@@ -135,7 +135,7 @@ The first experiments were promising. Interoperability was almost solved, but se
 
 \subsection{Event-based approach}
 
-Real-life events can occur in any order, at any time, in any context. Moreover, devices are more and more mobile and can dynamically join or quit the system. In order to address this dynamicity, we made use of event-based mechanisms. \gls{mom} offers a simple, and efficient means of communications, using the producer/consumer principle. Consumers subscribe to a topic they are interested in, and producers just have to publish on the right topic. Thus, producers do not care about the presence of consumers.\\
+Real-life events can occur in any order, at any time, in any context. Moreover, devices are more and more mobile and can dynamically join or quit the system. In order to address this dynamicity, we made use of event-based mechanisms. \gls{mom} offers a simple, and efficient means of communications, using the publish/subscribe principle. Event consumers subscribe to a topic they are interested in, and event producers just have to publish on the right topic. Thus, producers do not care about the presence of consumers.\\
 To be able to use this approach, physical devices have been considered from two perspectives. {\it Sensors} sense real life and human actions. Their role is to feed the system with events coming from real life. They are producers of events. Consuming these events, {\it Actuators} act on real life, using real-life equipment. They carry out orders such as switching on the lights, or opening or closing the shutters. 
 Components are not limited to a unique role, and can both consume and produce events.\\
 
@@ -222,10 +222,19 @@ In electronics, components admit only three kinds of ports (pins).\\
  	\label{fig:elecDataSheet}
 \end{figure}
 
-The component model created was strongly inspired by electronic components. Indeed, {\it InputPorts} and {\it OutputPorts} have been implemented as presented in figure~\ref{fig:component_type:logical}. They have been divided into \textit{synchronous} and \textit{asynchronous} kinds, to handle both object-based method call handling, and message-based communications between components.\\ 
-To keep close to existing component models and promote compatibility, the component model makes use of classical terms in its implementation. As a consequence, {\it InputPorts} are implemented as {\it provided} ports and {\it OutputPorts} as {\it required} ports, as shown in figure~\ref{fig:component_type:model}. For their part {\it ParameterPorts} have been implemented as <key,value> dictionaries.\\
+The component model created was strongly inspired by electronic components. Indeed, {\it InputPorts} and {\it OutputPorts} have been implemented as presented in figure~\ref{fig:component_type:logical}. They have been divided into \textit{synchronous} and \textit{asynchronous} kinds, to handle both object-based method call handling, and message-based communications between components.\\
 
-The following details each kind of port.\\
+\subsection{Meta-Model description}
+ 
+This section details the elements of the component model, presented in~\ref{fig:component_type:model}.\\
+
+{\bf ComponentType}\\
+
+The {\it ComponentType} meta-class carries the component description specification. Ports of the component are describes in collections; provided for input ports, required for output ports. The component type also contains a dictionary which declares parameters, and their default values, that can be specialized for each component instance.\\
+
+{\bf Ports}\\
+
+To keep close to existing component models and promote compatibility, the component model makes use of classical terms in its implementation. As a consequence, {\it InputPorts} are implemented as {\it provided} ports and {\it OutputPorts} as {\it required} ports, as shown in figure~\ref{fig:component_type:model}. For their part {\it ParameterPorts} have been implemented as <key,value> dictionaries.\\
 
 \paragraph{ParameterPorts}
 This kind of port is used to specialize component behavior. For example, the \textit{Timer} component uses a \textit{delay} parameter that represents the amount of time to be spent before the time-out occurs. A component can have multiple parameters. They are uniquely named in the component's scope, and can be optional or mandatory. All parameters a component admits are listed in a dictionary at model level.
@@ -261,7 +270,18 @@ Just as an electronic component, actions in our component model can have paramet
 \paragraph{OutputPorts}
 The main role of an OutputPort is to forward or release information. For instance, in figure~\ref{fig:component_type:logical} when the timer delay is over, the \textit{TIME\_OUT} port is activated and thus the connected InputPort (if any) also is. In case the activated \textit{InputPort} is synchronous, the result of its activation is returned by the called method. This is a blocking behavior, and may not be adapted to events coming from real life. If the activated port is a MessagePort, the result of its execution (if any) is given though a dedicated \textit{OutputPort}.\\
 
-All this results in a parallel between electronic and software components as shown by figure~\ref{fig:elecComponent}.\\
+
+All this results in a parallel between electronic and software components as shown by figure~\ref{fig:elecComponent}. Input(provided) ports are displayed on the left side, and Output (required) ports are on the right.\\
+
+{\bf Channel}\\
+
+A Channel connects two or several ports. Channels can be of different types, and are instantiated just as components are. Channels are providing communications to components. These communications can be realized with several protocols, politics and media. According to the situation, one can make use of a channel that sends messages in sequence, or of one sending in parallel. Channels can create the link using TCP or UDP sockets, RS232 serial connection, or a REST request. Channels are handling the communication semantic and method between components.\\
+Being defined outside the component, developers can make no assumption about the media or protocol that will be used, or the kind of component on the other side. This enforces the development of well defined standalone components and promote their reuse.\\
+
+{\bf Service Ports}\\
+
+Service ports come with the description of their operations (name, returned value) and a description of the operations' parameters (names and types). These information are used by channels, modeling tools and runtime platforms. Channels can play a role of mediation between not exactly aligned services descriptions. Modeling tools use these description to perform checks on component assemblies and authorize au not components' connections. Finally, runtime platforms can check the alignment, and may refuse any connection that violates a pre-defined connection rule.\\
+These checks are detailed in section~\ref{subsec:check_to_validate}.
 
 \subsection{Concrete example}
 \label{subsec:compoModConcreteExample}
@@ -381,7 +401,7 @@ Thanks to these mechanisms, models of components are available while the system 
 
 \subsection{Link with the interoperability layer}
 \label{subsec:compModLinkWithInterop}
-The actual implementation of the component model is slightly different from the view developers can have of components. The connection between two components is graphically a line linking two ports (see the top of figure~\ref{fig:linkWithInteropLayer}). Since ports can be synchronous or asynchronous, the runtime cannot handle port connections in the same way. The activation of an output port implies different behaviors according to its type. A message output port will send messages on topics to activate the linked input ports, but a service port has to start a method call.\\
+The actual implementation of the component model is slightly different from the view developers can have of components. The connection between two components(channel) is graphically a line linking two ports (see the top of figure~\ref{fig:linkWithInteropLayer}). The line represent a channel, dependent of the channel type selected in the library at design time. Since ports can be synchronous or asynchronous, the runtime cannot handle port connections in the same way. The activation of an output port implies different behaviors according to its type. A message output port will send messages on topics to activate the linked input ports, but a service port has to start a method call.\\
 
 \begin{figure}[h!]
 \includegraphics[width=\textwidth]{part2/pics/InteropModelLink}
@@ -389,7 +409,7 @@ The actual implementation of the component model is slightly different from the 
 \label{fig:linkWithInteropLayer}
 \end{figure}
 
-This complexity is hidden from developers in both the code and the model view of the components, by the use of proxies. At runtime, a proxy is generated for each port connected to another component's port, as illustrated in the bottom of figure~\ref{fig:linkWithInteropLayer}.\\
+This complexity is hidden from developers in both the code and the model view of the components, by the use of proxies behind the concept of channels. At runtime, a proxy is generated for each port connected to another component's port, as illustrated in the bottom of figure~\ref{fig:linkWithInteropLayer}.\\
 If the port is a message port, the proxies use messages and topics to communicate with each other. When an output port is activated, its proxy generates and sends a message on a pre-defined topic. On the other hand, a proxy listens to this topic only, and activates the input port on which it is connected when a message arrives. Activations are carried out with a {\it Command} design pattern, from the output port to activate the proxy, and from the proxy to the input port. The mechanism is thus transparent from the developer's viewpoint: an input port must provide a command pattern, an output port activates a command pattern.\\
 
 The mechanism of proxies has also been implemented to handle the method calls of service ports. Links between components' ports are thus handled in a uniform way. The introduction of proxies makes it possible to use other means of communication (in the case of distribution issues for instance), and enables some adaptation mechanisms.\\
@@ -448,18 +468,109 @@ In a classical software engineering process, conformance checking is done at 1) 
 \item {\bf Developer's actions}\\
 The assembly tool can monitor developers' actions. During the design phase, checkers can verify that only authorized operations are executed by the developer. When an inappropriate action is carried out, the triggering of warnings and errors can improve the development process. Thanks to this information, developers can immediately correct their code and learn from their mistakes. The earlier errors are detected and corrections made, the more the impact on the global solution is reduced. Also, developers' profiles could be created and associated with different checking policies according to the developers' expertise. This provides a fine-grained checking process for the design of applications.
 
+\begin{figure}
+\centering
+\begin{lstlisting}[caption=Example checking developpers' actions,label=fig:checkDevAct,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+def checkBindingsHomogeneity(model:ContainerRoot)
+	: java.util.List[CheckerViolation]={
+ model.getChannels.foreach { channel =>
+  val bindingsOnChannel = model.getBindings.filter(mb =>
+   mb.getChannels.equals(channel)
+  )
+  var synchBindings: List[Bindings] = List()
+  var asynchBindings: List[Bindings] = List()
+  bindingsOnChannel.foreach { binding =>
+   if (binding.getPort.getPortTypeRef.getRef.isInstanceOf[ServicePortType]) {
+    synchBindings = synchBindings ++ List(binding)
+   } else {
+    asynchBindings = asynchBindings ++ List(binding)
+   }
+  }
+  if (!synchBindings.isEmpty && !asynchBindings.isEmpty) {
+   val violation = new CheckerViolation
+   violation.setMessage(
+    "Ports of both Service and Message kinds are connected to the same hub : "
+    + hub.getName
+   )
+   violations = violations ++ List(violation)
+  }
+ }
+}
+\end{lstlisting} 
+\end{figure}
+
 \item {\bf Assembly constraints}\\
 The structure of an assembly can be constrained by rules, due to runtime constraints, or due to the framework used. These rules are neither specific to the developer, nor to the targeted business. A general policy could impose assemblies to be composed with at least two communication components. This constraint aims at keeping continuity in the communication service in case of failure. Valuable for all applications created by the company, this rule is shared by all software development projects.
 
+
+\begin{figure}
+\centering
+\begin{lstlisting}[caption=Example checking assembly constraints,label=fig:checkAssembly,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+def checkMandatoryConnections(model: ContainerRoot)
+	: java.util.List[CheckerViolation]={
+ node.getComponents.foreach { component =>
+  component.getRequired.foreach { port =>
+   if (!port.getPortTypeRef.getOptional && !port.isBind) {
+    val concreteViolation: CheckerViolation = new CheckerViolation()
+    concreteViolation.setMessage(
+     "Required port (" 
+     + port.eContainer.asInstanceOf[ComponentInstance].getName
+     + "." + port.getPortTypeRef.getName + ") is not bind"
+    )
+    concreteViolation.setTargetObjects(List(port))
+    violations = violations ++ List(concreteViolation)
+}}}}
+\end{lstlisting} 
+\end{figure}
+
+
+
 \item {\bf Business Rules}\\
 An application created to control a plane has different constraints compared to a watering management system. Each application domain can require that special rules are considered. This checkpoint is placed just before the model deployment. The validation of conformance at this moment avoids the sending of corrupted models to the runtime.
+
+\begin{figure}
+\centering
+\begin{lstlisting}[caption=Example checking business pre-deploy  constraints,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+
+\end{lstlisting} 
+\end{figure}
 
 \item {\bf Platform Rules}\\
 A platform is a system composed of both software and hardware. The composition of the execution platform may impact the development, or deployment of a component-based application. The role of this check is to verify that all constraints inherent to the platform choice are respected. As checks are performed at the model level, they can be realized by the runtime platform itself, with no consequence on the running application. For instance, a model can be rejected if one of the components requires a serial connection, and the runtime hardware of the platform has none.\\
 Modeling the platform resources could enable to move these checks to before deployment and thus gain time.
 
+\begin{figure}
+\centering
+\begin{lstlisting}[caption=Example checking pre-deploy constraints,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+def serialConnectionCheck(model:ContainerRoot)
+	:java.lang.util.List[]={
+ model.getChannels.exists { channel =>
+ 	channel.isInstanceOf[SerialConnectionChannel]
+ } match {
+  case Some(c) => {
+   val concreteViolation: CheckerViolation = new CheckerViolation()
+   concreteViolation.setMessage(
+    "SerialConnection not supported. (" + c.getName + ")"
+   )
+   concreteViolation.setTargetObjects(List(port))
+   violations = violations ++ List(concreteViolation)	
+  }
+  case None => //Noting to do
+ }
+}
+\end{lstlisting} 
+\end{figure}
+
 \item {\bf Check deployment commands}\\
 The last step of checking consists in the first step of Models@Runtime mechanisms. As explained in section~\ref{subsec:modelatruntime}, the deployment of a component assembly is split into several commands. This last verification ensures that all commands are executable before running the sequence.
+
+\begin{figure}
+\centering
+\begin{lstlisting}[caption=Example checking business pre-deploy  constraints,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
+
+\end{lstlisting} 
+\end{figure}
+
 
 \end{enumerate}
 
