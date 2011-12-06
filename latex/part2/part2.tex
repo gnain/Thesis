@@ -464,7 +464,9 @@ In electronics, the components' assembly has to be approved. Its conformance in 
 
 
 
-In a classical software engineering process, conformance checking is done at 1) design time by the developer, 2) compilation time automatically, and 3) by running tests on the application built. The modeling approach offers a way to perform more precise checks, targeting more specific concerns, at several moments between the design and deployment phases. Figure~\ref{fig:checkPoints} displays the different moments where checks can be performed and illustrates what can be checked at each moment. These steps are detailed in the following paragraphs.
+In a classical software engineering process, conformance checking is done at 1) design time by the developer, 2) compilation time automatically, and 3) by running tests on the application built. The modeling approach offers a way to perform more precise checks, targeting more specific concerns, at several moments between the design and deployment phases.\\
+Checking methods presented here have been written in Kermeta~\cite{Muller05a}. Kermeta is a modeling and aspect oriented programming language. Its underlying metamodel conforms to the EMOF standard. It is designed to write programs which are also models, to write transformations of models (programs that transform a model into another), to write constraints on these models, and to execute them. Once written, there rules have been compiled and integrated in the model editor and in the runtime platform.\\
+Figure~\ref{fig:checkPoints} displays the different moments where checks can be performed and illustrates what can be checked at each moment. These steps are detailed in the following paragraphs.
 
 \vspace{0.75cm}
 \begin{enumerate}
@@ -475,31 +477,34 @@ Listing~\ref{fig:checkDevAct} illustrates this by checking that for each channel
 \begin{figure}[h!]
 \centering
 \begin{lstlisting}[caption=Example checking developpers' actions,label=fig:checkDevAct,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
-def checkBindingsHomogeneity(model:ContainerRoot)
-	: java.util.List[CheckerViolation]={
- model.getChannels.foreach { channel =>
-  val bindingsOnChannel = model.getBindings.filter(mb =>
-   mb.getChannels.equals(channel)
-  )
-  var synchBindings: List[Bindings] = List()
-  var asynchBindings: List[Bindings] = List()
-  bindingsOnChannel.foreach { binding =>
-   if (binding.getPort.getPortTypeRef.getRef.isInstanceOf[ServicePortType]) {
-    synchBindings = synchBindings ++ List(binding)
-   } else {
-    asynchBindings = asynchBindings ++ List(binding)
-   }
+operation checkBindingsHomogeneity(model:ContainerRoot)
+	: Sequence<CheckerViolation> is do
+ var violations : Sequence<CheckerViolation>
+ model.hubs.each { channel |
+  var bindingsOnChannel : Sequence<MBinding>
+  bindingsOnChannel := model.mBindings.select{mb |
+   mb.hub.equals(channel)
   }
-  if (!synchBindings.isEmpty && !asynchBindings.isEmpty) {
-   val violation = new CheckerViolation
-   violation.setMessage(
-    "Ports of both Service and Message kinds are connected to the same hub : "
-    + hub.getName
-   )
-   violations = violations ++ List(violation)
+  var synchBindings :  Sequence<MBinding> 
+  var asynchBindings : Sequence<MBinding>
+  bindingsOnChannel.each { binding | 			
+   if binding.port.portTypeRef.isKindOf(ServicePortType) then
+     synchBindings.add(binding)
+   else
+     asynchBindings.add(binding)
+   end
   }
+  if (not synchBindings.isEmpty) and (not asynchBindings.isEmpty) then
+    var violation : CheckerViolation init CheckerViolation.new
+    violation.message :=
+    "Ports of both Service and Message kinds are connected to the same channel:"
+    + channel.name
+    violations.add(violation)
+   end  			
  }
-}
+ 		
+ result := violations
+end
 \end{lstlisting}
 \vspace{-0,4cm}
 \end{figure}
@@ -513,20 +518,24 @@ The method presented in Listing~\ref{fig:checkAssembly} checks that for each com
 \begin{figure}[h!]
 \centering
 \begin{lstlisting}[caption=Example checking assembly constraints,label=fig:checkAssembly,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
-def checkMandatoryConnections(model: ContainerRoot)
-	: java.util.List[CheckerViolation]={
- node.getComponents.foreach { component =>
-  component.getRequired.foreach { port =>
-   if (!port.getPortTypeRef.getOptional && !port.isBind) {
-    val concreteViolation: CheckerViolation = new CheckerViolation()
-    concreteViolation.setMessage(
-     "Required port (" 
-     + port.eContainer.asInstanceOf[ComponentInstance].getName
-     + "." + port.getPortTypeRef.getName + ") is not bind"
-    )
-    concreteViolation.setTargetObjects(List(port))
-    violations = violations ++ List(concreteViolation)
-}}}}
+operation checkMandatoryConnections(model: ContainerRoot, node : ContainerNode)
+	: Sequence<CheckerViolation> is do
+ var violations : Sequence<CheckerViolation>
+ node.components.each { component |
+  component.required.each { port |
+   if( not port.portTypeRef.optional) and port.isBind then
+     var concreteViolation : CheckerViolation init CheckerViolation.new
+    	 concreteViolation.message :=
+      "Required port (" + port.eContainer.asType(ComponentInstance).name
+      + "." + port.portTypeRef.name
+      + ") is not bind"
+    	 concreteViolation.addTargetObject(port)
+    	 violations.add(concreteViolation)
+   end
+  }
+ }
+ result := violations
+end
 \end{lstlisting} 
 \vspace{-0,3cm}
 \end{figure}
@@ -541,22 +550,29 @@ The rule presented in Listing~\ref{fig:checkBusiness} verifies that for each cha
 \vspace{-0,3cm}
 \centering
 \begin{lstlisting}[caption=Example checking identical port names,label=fig:checkBusiness,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
-def checkBindingsHomogeneity(model:ContainerRoot)
-	: java.util.List[CheckerViolation]={
- model.getChannels.foreach { channel =>
-  val bindingsOnChannel = model.getBindings.filter(mb =>
-   mb.getChannels.equals(channel)
-  )
-  var portName = ""
-  bindingsOnChannel.foreach { binding =>
-   if(portName.equals("") {
-    portName = binding.getPort.getPortTypeRef.getName
-   }else {
-    if(!binding.getPort.getPortTypeRef.getName.equals(portName)) {
-  	 val violation = new CheckerViolation
-     violation.setMessage("Connection not authorized.")
-     violations = violations ++ List(violation)
-}}}}}
+operation checkPortsEquality(model:ContainerRoot)
+	: Sequence<CheckerViolation> is do
+ var violations : Sequence<CheckerViolation>
+ model.hubs.each { channel |
+  var bindingsOnChannel : Sequence<MBinding>
+  bindingsOnChannel := model.mBindings.select{ mb |
+   mb.hub.equals(channel)
+  }
+  var portName : String init ""
+  bindingsOnChannel.each { binding |
+   if portName.equals("") then
+     portName := binding.port.portTypeRef.name
+   else 
+    if not binding.port.portTypeRef.name.equals(portName) then 
+      var violation : CheckerViolation init CheckerViolation.new
+      violation.message := "Connection not authorized."
+	  violations.add(violation)
+    end
+   end
+  }
+ }
+ result := violations
+end
 \end{lstlisting} 
 \vspace{-0,4cm}
 \end{figure}
@@ -568,22 +584,20 @@ The Listing~\ref{fig:platformChecks} ensures no channel is using the SerialConne
 \begin{figure}[h!]
 \centering
 \begin{lstlisting}[caption=Example checking pre-deploy constraints,label=fig:platformChecks,basicstyle=\scriptsize\ttfamily,tabsize=1 ]
-def serialConnectionCheck(model:ContainerRoot)
-	:java.lang.util.List[]={
- model.getChannels.exists { channel =>
- 	channel.isInstanceOf[SerialConnectionChannel]
- } match {
-  case Some(c) => {
-   val concreteViolation: CheckerViolation = new CheckerViolation()
+operation serialConnectionCheck(model:ContainerRoot)
+	: java::lang::util::List<CheckerViolation> is do
+ if model.getChannels.exists { channel |
+ 	channel instanceOf SerialConnectionChannel
+ }.isEmpty then
+   var concreteViolation: CheckerViolation init CheckerViolation.new
    concreteViolation.setMessage(
-    "SerialConnection not supported. (" + c.getName + ")"
+    "SerialConnection not supported. (" + channel.getName + ")"
    )
-   concreteViolation.setTargetObjects(List(port))
-   violations = violations ++ List(concreteViolation)	
-  }
-  case None => //Noting to do
- }
-}
+   concreteViolation.setTargetObjects(channel)
+   violations.add(concreteViolation)
+  end
+  result := violations
+end
 \end{lstlisting} 
 \vspace{-0,3cm}
 \end{figure}
@@ -701,13 +715,14 @@ This chapter aims at providing a bit more details about the outcomes of this the
 
 The ideas presented in this thesis have been tested and improved in several situations and contexts thanks to an implementation.\\
 
-{\bf EnTiMid} has grouped together all separated layers to provide a first running implementation of the component model and tools. Because of the context, EnTiMid target the creation and realization of software applications in the domain of Home Automation. However, ideas presented in this thesis are more general and applicable in other domains such as Machine-To-Machine or automotive industry.\\
+{\bf EnTiMid} has grouped together all separated layers to provide a first running implementation of the component model and tools. Because of the context, EnTiMid targets the creation and realization of software applications in the domain of Home Automation. However, ideas presented in this thesis are more general and applicable in other domains such as Machine-To-Machine or automotive industry.\\
 The arrival of a new PhD student in the team incited to rethought and rebuild the software solution.\\
 
-{\bf Kevoree} has inspired and integrated ideas developed in this thesis and in EnTiMid, to create a more general purpose software development environment. This generalization enables the use of these ideas in several projects and implementation in the team. It also allows for future specializations or extensions of this work. As for EnTiMid, it has been re-factored to specialize Kevoree for a use in the domain of HomeAutomation.\\
+{\bf Kevoree} has inspired and integrated ideas developed in this thesis and in EnTiMid, to create a more general purpose software development environment. This generalization enables the use of these ideas in several projects and implementation in the team. It also allows for future specializations or extensions of this work. As for EnTiMid, it has been re-factored to specialize Kevoree for a use in the domain of HomeAutomation.
 
-{\bf Metrics}\\
-The table~\ref{table:metrics} provides some lines of code metrics of Kevoree and EnTiMidd. These metrics have been measured on Kevoree 1.5.0-SNAPSHOT and EnTiMid 3.0.0-SNAPSHOT on the 23rd November 2011.\\
+\section{Metrics}
+The table~\ref{table:metrics} provides some lines of code metrics of Kevoree and EnTiMidd. These metrics have been measured on Kevoree 1.5.0-SNAPSHOT and EnTiMid 3.0.0-SNAPSHOT on the 23rd November 2011. The counting was realized using Cloc\footnote{http://cloc.sourceforge.net/} by considering only files contained in the {\it src} folder of each project. Thus generated code has not been counted. A Maven\footnote{http://maven.apache.org/} plugin recursively launched the counting on sub-modules of a top-project, and aggregated the results.\\
+
 \begin{table}
 \centering
 \begin{tabular}{l||c|c|c|c|c}
@@ -730,15 +745,13 @@ EnTiMid-Extra & 0 & 1091 & 1091 & 85\% & 927,35 \\
 Kevoree and EnTiMid have been implemented in mixed Java and Scala languages. The table provides an indication of my participation in the different projects of the implementation. The complement has been realized in collaboration with other PhD students of the team.\\
 The core of Kevoree embeds the implementation of the meta-model, a loader, a serializer, a cloner and some utility classes grouped in a framework used for both runtime management and design of components.\\
 Kevoree-Tools contains a graphical editor for components and assemblies, model and code synchronization tools and the definition of a scripting language to ease the management of models.\\
-
 Since, Kevoree can be seen as a generalization of EnTiMid, the most important part of development in EnTiMid was paid in creating component libraries and extra APIs wrapping, specialized for home automation technologies and devices. For demonstration purposes, several additional tools had also been realized.
 
 \section{Classification}
 
 Crnkovic proposed in~\cite{Crnkovic_1374:2007} a classification framework "to increase the understanding of concepts and easier differentiate component models". This section aims at classifying the component model of this thesis according to this classification. Four dimensions are considered in~\cite{Crnkovic_1374:2007}. Each dimension is presented in a separated subsection.\\
-
 The tables presented here have been extracted (for existing component models) from the Crnkovic classification, and completed to integrate EnTiMid. The component models selected for this extraction are also present in the state-of-the-art section.
-\vspace{1cm}
+
 \subsection{Lifecycle}
 ~\vspace{-0,5cm}
 \begin{table}[h!]
