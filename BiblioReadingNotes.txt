@@ -1,10 +1,0 @@
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+                   Related Platforms                  +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-***********************
-*      I-Living       *
-***********************
-Our system, I-Living, [18], ultimately belongs in the home. However, to study its potential impact we focused on people who currently live in facilities but would live at home if given the option. I-Living currently acts as an alert system. It sends seniors reminders, such as medication and doctors' appointments. Its design, however, allows a variety of sensor devices and interfaces to come online via a flexible architecture.The main goal of our project is to provide the elderly with the option of living independently with confidence and security. When fully realized, we hope I-Living will permit seniors to manage their own health at home in a cost-effective way. The work we present here is the first step towards achieving that goal.
