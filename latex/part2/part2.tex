@@ -10,7 +10,7 @@ Sir Robert Baden-Powell
 \end{flushright}
 \vspace{2cm}
 
-The study of the state-of-the-art in software engineering has highlighted the lack of a software solution to address all requirements identified in the context of home automation for Ambient Assisted Living. According to this observation, the goal of this thesis is to fill this gap by providing sucha tool.\\
+The study of the state-of-the-art in software engineering has highlighted the lack of a software solution to address all requirements identified in the context of home automation for Ambient Assisted Living. According to this observation, the goal of this thesis is to fill this gap by providing such a tool.\\
 
 This section presents the achievements of this thesis. While the first chapter gives information about some central themes that drove this work, chapter~\ref{ch:detailsStrata} details the contribution. Then chapter~\ref{ch:outcomes} brings some information about the implementation and places the contribution in a classification framework.
 
@@ -117,7 +117,7 @@ In~\cite{Bromberg:2009} Bromberg et al. propose to automatically generate gatewa
 
 \subsection{Use of drivers}
 \label{subsec:useOfDrivers}
-To realize this abstraction, drivers have been developed. A driver makes the link between real world devices and their virtual representation in a software system. Thus, they take on two responsibilities. In one way, they convert from vendor-specific communication messages to actions on their virtual representative. Naturally, they translate in the other way, actions on virtual elements into vendor-specific messages. \\
+To realize this abstraction, drivers have been developed. A driver makes the link between real world devices and their virtual representation in a software system. Thus, they take on two responsibilities. In one way, they convert from vendor-specific communication messages to actions on their virtual representative. They also translate in the other way, actions on virtual elements into vendor-specific messages. \\
 Secondly, drivers provide the virtual structures for each product they are able to interact with. All implementations specific to a given manufacturer are thus contained in drivers, or separate libraries. This makes the core system completely independent from devices' implementation specificities.\\
 
 This independence implies the creation of a common structure, for the system to be able to properly handle devices in a good abstraction level.
@@ -131,7 +131,7 @@ This common structure may take the form of a set of programming interfaces. Each
 \caption{Functional Interfaces}
 \label{fig:interfaces}
 \end{figure}
-The first experiments were promising. Interoperability was almost solved, but several drawbacks were rapidly identified while using this approach in real use cases. The set of interfaces is only extensible by augmentation of the framework. The development of a device driver could have fail because the required function interface was not available in the library. Moreover, direct method calls are not appropriate if the system has to consider a dynamic environment, in which objects unpredictably appear and disappear. In this case, object-oriented development using synchronous method calls becomes quite hazardous. Finally, if for any reason a component implementing the {\it LightControler} interface has to be plugged into a shutter, the operation is simply not feasible without an ad-hoc adapter (illustrated in figure~\ref{fig:interfaces}). Interoperability was not solved.\\
+The first experiments were promising. Interoperability was almost solved, but several drawbacks were rapidly identified while using this approach in real use cases. The set of interfaces is only extensible by augmentation of the framework. The development of a device driver could have fail because the required function interface was not available in the library. Moreover, direct method calls are not appropriate if the system has to consider a dynamic environment, in which objects unpredictably appear and disappear. In this case, object-oriented development using synchronous method calls becomes quite hazardous. Finally, if for any reason a component implementing the {\it LightControler} interface has to be plugged into a shutter, the operation is not feasible without an ad-hoc adapter (illustrated in figure~\ref{fig:interfaces}). Interoperability was not solved.\\
 
 
 \subsection{Event-based approach}
@@ -208,8 +208,8 @@ This section is organized as follows: section~\ref{subsec:makeSoftCloserToElec} 
 \subsection{Making software components closer to electronic components}
 \label{subsec:makeSoftCloserToElec}
 
-When talking about components, electronic ones are probably the first kind of component to come to mind for a lot of people. An electronic component, as shown in the bottom left part of figure~\ref{fig:elecDataSheet}, is a black box surrounded by pins. The shape of the pins is standard and allows components to be connected to any board. Obviously, neither the pins nor the board have the ability to refuse the connection of two components. This absence of constraints allows electronic components to be used in a large variety of contexts. They can be connected to a multitude of other components to create appliances. This is the perfect description of the behavior required for a software component.\\
-Nevertheless, software components' ports are generally specialized by a programming interface (API). Thus, unlike electronic components' pins, their shapes are not standard. The goal of this specialization is to ensure the alignment of services. However, this is too strong a limitation in our context.\\
+When talking about components, electronic ones are probably the first kind of component to come to mind for a lot of people. An electronic component, as shown in the bottom left part of figure~\ref{fig:elecDataSheet}, is a black box surrounded by pins. The shape of the pins is standard and allows components to be connected to any board. Neither the pins nor the board have the ability to refuse the connection of two components. This absence of constraints allows electronic components to be used in a large variety of contexts. They can be connected to a multitude of other components to create appliances. This is the perfect description of the behavior required for a software component.\\
+Nevertheless, software components' ports are generally specialized by a programming interface (API). Thus, unlike electronic components' pins, their shapes are not standard. The goal of this specialization is to ensure the alignment of services. However, this is a too strong limitation in our context.\\
 
 In electronics, components admit only three kinds of ports (pins).\\
 {\bf Input Ports} collect all necessary information from the outside, for the component to do its job. At the same time, they can trigger the execution of an associated task. Typical examples are the \textit{A} and \textit{B} input values of a comparator.\\
@@ -375,10 +375,10 @@ The first annotations on the class inform about the {\it Input}, {\it Output} an
 This {\it Timer} implementation offers two outputs, visible as {\it Required Ports}. A {\it log} port, which sends information about the internal behavior of the component, and a {\it time\_out} port activated when the countdown ends.\\
 The Timer admits a parameter. This parameter sets the delay between the start and the activation of the time\_out port. This parameter appears in a dictionary.\\
 The {\it @Library} indicates that the component is part of the virtual library of components called "EnTiMid - Framework". In edition tools, all components of the same library are presented under the same package of components. A library of components can be defined using several deployment units.\\
-The last annotation simply tags the class as a component type implementation. This annotation is mandatory for the compilation tools to consider the class as a component type.\\
+The last annotation tags the class as a component type implementation. This annotation is mandatory for the compilation tools to consider the class as a component type.\\
 
 {\bf Port mappings}\\
-Once described, input ports have to be linked to the method implementing the action. In the example, one may remark that a port can be bound to at most one method, but a method can be reached from several ports. Indeed, the behavior of a {\it start} and a {\it restart} of a timer are implemented the same way. Classical solutions could have been to remove one action or to copy-paste the method. From a user perspective (sect.~\ref{subsec:keepUserInMind}), a Timer should be able to be started and restarted which implies not to removing the port. Thanks to this multiple mapping, the user will be satisfied with no redundancy of code.\\
+Once described, input ports have to be linked to the method implementing the action. In the example, one may remark that a port can be bound to at most one method, but a method can be reached from several ports (1 method can be mapped on n ports). Indeed, the behavior of a {\it start} and a {\it restart} of a timer are implemented the same way. Classical solutions could have been to remove one action or to copy-paste the method. From a user perspective (sect.~\ref{subsec:keepUserInMind}), a Timer should be able to be started and restarted which implies not to removing the port. Thanks to this multiple mapping, the user will be satisfied with no redundancy of code.\\
 Moreover, the transfer of the annotation from one method to another, changes the method called when a port is activated. This change is completely transparent for assemblies already using the component, since the annotation is not modified. This is a great ability that enables changes in the implementation and method names, with no change in the component interface.\\
 Finally, a component can offer the same service through both {\it Service} and {\it Message} port. Using the same mechanism, the same method can be called in both cases.\\
 
@@ -394,11 +394,47 @@ At the end of the compilation process, the newly-computed model is added into th
 {\bf Model First}\\
 Writing component type code, plus the annotations, may become a complicated task. A non-familiarized person may experience difficulties in placing all the annotations required to describe its component.
 The model-first approach aims at providing tools to graphically (or textually) describe the component first, and then ask for the implementation to be generated. This method is made available by the use of tools such as graphical \gls{dsl}, textual \gls{dsl} or generic meta-modeling languages such as Kermeta~\cite{Muller05a}. Models bring a more intuitive approach for the description of a component.\\ 
-Once the developer is done with its component's model, the generation tool is activated. If the implementation class of the component does not already exist, a new file is created. This file contains the skeleton of the component implementation. Obviously, the code generation reaches its limits when the body of methods has to be created. The behavior of methods is the only part to be completed by hand by the developer. Otherwise, the class is already decorated with all annotations, and ports are mapped by default on generated methods.\\
+Once the developer is done with its component's model, the generation tool is activated. If the implementation class of the component does not already exist, a new file is created. This file contains the skeleton of the component implementation. The code generation reaches its limits when the body of methods has to be created. The behavior of methods is the only part to be completed by hand by the developer. Otherwise, the class is already decorated with all annotations, and ports are mapped by default on generated methods.\\
 When an implementation class already exists, the generation process is slightly more complex. In fact, a temporary model is extracted from the existing code and an \gls{ast} of the code is created. The \gls{ast} describes the code using a tree structure containing objects. Each object stands for a method, an argument, an attribute, etc. A comparison is made between the model created by the user, and the model extracted from the existing code. Each difference is analyzed, and modifications are made on the \gls{ast}. The final code is generated from the modified \gls{ast}.\\
 The model-first approach helps somewhat in linking the model and the code. In any case, the resulting code still needs a developer to complete the new methods created, to remove dead code and to optimize the mappings.\\
 
 Thanks to these mechanisms, models of components are available while the system is not running. Their conformance with the actual implementation is guaranteed by construction. This model abstraction makes it possible to create and exploit tools from \gls{mde}.\\
+
+
+\subsection{Implementation independence}
+\label{subsec:compImplIndep}
+
+As previously presented, the model of a component is independent from the actual implementation. Listing ~\ref{fig:implIndep} illustrates this independence. Indeed, the FakeSimpleLight component declares a {\it onoff} provided port that renders a OnOffService. The OnOffService class is a Java interface containing two methods {\it on} and {\it off}, a kind of contract the component ensures this port is compliant with. However, the implementation class of the component does not actually implements the interface.\\
+\begin{figure}[h!]
+\centering
+\begin{lstlisting}[caption=Implementation independence,label=fig:implIndep,basicstyle=\scriptsize\ttfamily,tabsize=2 ]
+@Provides({
+    @ProvidedPort(name = "on", type = PortType.MESSAGE),
+    @ProvidedPort(name = "off", type = PortType.MESSAGE),
+    @ProvidedPort(name = "onoff", className = OnOffService.class)
+})
+@ComponentType
+public class FakeSimpleLight extends AbstractFakeStuffComponent {
+ @Ports({
+  @Port(name = "on", method = "process"),
+  @Port(name = "onoff", method = "on")})
+ public void lightOn(Object o) {
+  [...]
+ }
+
+ @Ports({
+  @Port(name = "off", method = "process"),
+  @Port(name = "onoff", method = "off")})
+ public void lightOff(Object o) {
+  [...]
+ }
+ [...]
+}
+\end{lstlisting} 
+\end{figure}\\
+Each method of the OnOffService is bind on a method of the component's implementation by mean of a {\it Port} annotation. Since the component does not implement the OnOffService interface, the Java compiler can not check that all methods are present. This check is thus performed while parsing the annotations for the extraction of the model, before the actual compilation.
+
+
 
 \subsection{Link with the interoperability layer}
 \label{subsec:compModLinkWithInterop}
@@ -627,7 +663,7 @@ The steps to go from the current configuration to the required one are specified
 The comparison system only deals with abstract commands, to allow a change of the component management policy. The real commands are instantiated (not yet executed) according to the actual policy, during the model comparison.\\
 
 {\bf Planning the execution sequence}\\
-These commands are stored in a collection and ordered according to a heuristic~\cite{Andre:2010} that ensures a safe migration from the current to the target configuration. Before actually executing the commands, the list is parsed to verify that all the commands can be executed. For example, for all {\it AddComponent} commands, the presence of the specific component factory is checked, to ensure all components can actually be added without any problems. Doing this kind of verification for all commands ensures that the command execution will execute properly. If a command is detected as non-executable, a report clearly describes the problem, and no command at all is executed. This way, the system is always kept consistent.\\
+These commands are stored in a collection and ordered according to a heuristic~\cite{Andre:2010,Bratskas:2010} that ensures a safe migration from the current to the target configuration. Before actually executing the commands, the list is parsed to verify that all the commands can be executed. For example, for all {\it AddComponent} commands, the presence of the specific component factory is checked, to ensure all components can actually be added without any problems. Doing this kind of verification for all commands ensures that the command execution will execute properly. If a command is detected as non-executable, a report clearly describes the problem, and no command at all is executed. This way, the system is always kept consistent.\\
 
 {\bf Roll-back abilities}
 In case the migration fails, each command is decorated with a roll-back equivalent command. Thus, each command executed before the failure can be cancelled. Moreover, a second protection in place consists in keeping the old model in memory. If everything goes wrong, it is always possible to restart from scratch, and migrate back to the old model.\\
@@ -650,7 +686,7 @@ As previously explained, real commands for the migration are instantiated accord
   \vspace{-5mm}
 \end{wrapfigure}
 
-For the proposed approach to efficiently cope with dynamic evolutions, the underlying runtime environment is required to offer dynamic abilities. As explained in~\cite{Di-Nitto:2008}, the concept of service has emerged as a good candidate to cope with the dynamicity of adaptive systems. The adoption of this concept led to the development of technologies, standards, and methods to build service-based applications. Since the Service-Oriented paradigm insists on the pervasiveness of services, it naturally imposes service-based applications to properly handle this requirement. Indeed, services can appear and disappear at any time, and applications built upon these principles obviously have to take these constraints into account.\\
+For the proposed approach to efficiently cope with dynamic evolutions, the underlying runtime environment is required to offer dynamic abilities. As explained in~\cite{Di-Nitto:2008}, the concept of service has emerged as a good candidate to cope with the dynamicity of adaptive systems. The adoption of this concept led to the development of technologies, standards, and methods to build service-based applications. Since the Service-Oriented paradigm insists on the pervasiveness of services, it imposes service-based applications to properly handle this requirement. Indeed, services can appear and disappear at any time, and applications built upon these principles have to take these constraints into account.\\
 
 The OSGi Alliance~\cite{OSGI:r4}, a 'consortium of technology innovators', has released a set of specifications that define a service-oriented platform, and its common services. This Service-Oriented Runtime has been selected to support commands that require adding or removing component instances and types(binaries), during the execution.\\
 
@@ -718,14 +754,53 @@ The ideas presented in this thesis have been tested and improved in several situ
 {\bf EnTiMid} has grouped together all separated layers to provide a first running implementation of the component model and tools. Because of the context, EnTiMid targets the creation and realization of software applications in the domain of Home Automation. However, ideas presented in this thesis are more general and applicable in other domains such as Machine-To-Machine or automotive industry.\\
 The arrival of a new PhD student in the team incited to rethought and rebuild the software solution.\\
 
-{\bf Kevoree} has inspired and integrated ideas developed in this thesis and in EnTiMid, to create a more general purpose software development environment. This generalization enables the use of these ideas in several projects and implementation in the team. It also allows for future specializations or extensions of this work. As for EnTiMid, it has been re-factored to specialize Kevoree for a use in the domain of HomeAutomation.
+{\bf Kevoree} has inspired and integrated ideas developed in this thesis and in EnTiMid, to create a more general purpose software development environment. This generalization enables the use of these ideas in several projects and implementation in the team. It also allows for future specializations or extensions of this work. As for EnTiMid, it has been re-factored to specialize Kevoree for a use in the domain of HomeAutomation.\\
+
+EnTiMid concentrates in integrating new ideas like Models@Runtime and the flexible component model. Thus, an iterative process on top of an OSGi platform led to the creation of a new component model with its implementation. However, this implementation allowed us to change, drop, refactor our code to validate our ideas, which could have been more difficult by extending existing platforms.\\
+If the implementation is home-made, the structure of components in our component model is close to existing models, making it possible to develop extensions to integrate the contributions of this thesis to existing models.\\
+
+
+\section{Impact on the development process}
+
+The use of \enti{} impacts the development process at several levels. To describe this impact, this section details the elements manipulated and the tools available for different development phases.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.8\textwidth]{part2/pics/Chain.pdf}
+  \caption{EnTiMid development chain}
+  \label{fig:devchain}
+\end{figure}
+
+
+\subsection{Component development}
+
+Since the component model is highly permissive, component developers cannot make any assumption on the context of use of the component. Components are thus required to be well protected against wrong usages, bad or missing parameters.\\
+The use of annotations to describe the model and map ports and methods, makes easier the migrations of code, refactorings and evolutions of implementations.
+The model of a component described by the annotations can be different from its actual implementation, because several ports can be mapped on a single method.
+Moreover, if a component offers a service port (implementing a specific interface), the component's implementation class does not have to (but still can) implement the interface of the provided service. The only required thing is to map all methods of the service interface to operation in the code.\\
+These mappings provide flexibility to component models and their implementations.\\
+
+The compilation chain, represented on figure~\ref{fig:devchain} by the "Code2Model" box, automatically checks for mandatory life-cycle methods and verifies that all methods of all ports are actually mapped on implementation methods. In the same time, the chain extracts the models of the components by parsing the annotations. These models are then embedded in the archive containing the sources compiled in the same compilation process. This guaranties the model-code consistency by construction.\\
+
+As presented on top of figure~\ref{fig:devchain}, a component editor can be used to create or modify an existing component model. This model of component is then synchronized with the code thanks to a tool, "Model2Code engine", which generates a component's implementation skeleton or updates the annotations in an existing code.
+
+\subsection{Application design}
+
+In a design process, the component model of EnTiMid and the assembly tools make it possible to connect heterogeneous components, such as actual devices, functions, or services available through internet. Since the model is very flexible and permissive, designer can try and deploy any combination of components, unless checkers in the assembly tool or in the runtime reject the model. The bottom of figure~\ref{fig:devchain} illustrates this.\\
+
+According to the domain of application, checkers can be specialized to avoid assemblies identified as leading to failures. Moreover, checkers can be adapted to the current user of the application and give more authorizations to an engineer, and more restrictions to the end-user for instance.\\
+
+Finally, runtime checkers have to be specialized to reject models requiring resources not available on the platform (serial port connections for instance).\\
+
+In case an adaptation or an evolution is required, the model of the running system is always available and can be collected directly from the runtime. Once updated, the model of the system can be sent to the runtime for a adaptation of the actually running application.
+
 
 \section{Metrics}
-The table~\ref{table:metrics} provides some lines of code metrics of Kevoree and EnTiMidd. These metrics have been measured on Kevoree 1.5.0-SNAPSHOT and EnTiMid 3.0.0-SNAPSHOT on the 23rd November 2011. The counting was realized using Cloc\footnote{http://cloc.sourceforge.net/} by considering only files contained in the {\it src} folder of each project. Thus generated code has not been counted. A Maven\footnote{http://maven.apache.org/} plugin recursively launched the counting on sub-modules of a top-project, and aggregated the results.\\
+The table~\ref{table:metrics} provides some lines of code metrics of Kevoree and EnTiMid. These metrics have been measured on Kevoree 1.5.0-SNAPSHOT and EnTiMid 3.0.0-SNAPSHOT on the 23rd November 2011. The counting was realized using Cloc\footnote{http://cloc.sourceforge.net/} by considering only files contained in the {\it src} folder of each project. Thus generated code has not been counted. A Maven\footnote{http://maven.apache.org/} plugin recursively launched the counting on sub-modules of a top-project, and aggregated the results.\\
 
-\begin{table}
+\begin{table}[h!]
 \centering
-\begin{tabular}{l||c|c|c|c|c}
+\begin{tabular}{l||>{\centering}m{1cm}|>{\centering}m{1.5cm}|>{\centering}m{1.5cm}|>{\centering}m{1.5cm}|>{\centering\arraybackslash}m{1.5cm}}
 Project & Scala & Java & Total & Part & Value \\
 \hline \hline
 Kevoree-Core & 8143 & 344 & 8487 & 11,54\% & 979,3 \\
@@ -802,7 +877,7 @@ EnTiMid & Port-based & Yes & Types Specified in Interfaces & Java, Annotation, o
 \label{table:classifConstIface}
 \end{table}
 
-Each port in EnTiMid can be specified independently, making interfaces types port-based. Naturally, the model differentiates between provided and required ports. The types of ports are specified in the component model and their parameters also, which is a particularity. The language to describe the interface can be Java(for services ports) or just annotations (for message ports). In case of message ports, they handle the semantic of the call; otherwise it is a syntactic interface level.
+Each port in EnTiMid can be specified independently, making interfaces types port-based. The model also differentiates between provided and required ports. The types of ports are specified in the component model and their parameters also, which is a particularity. The language to describe the interface can be Java(for services ports) or just annotations (for message ports). In case of message ports, they handle the semantic of the call; otherwise it is a syntactic interface level.
 
 \begin{table}[h!]
 \centering

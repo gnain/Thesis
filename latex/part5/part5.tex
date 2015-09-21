@@ -29,7 +29,7 @@ The technical solutions designed in this context require some software systems t
 {\bf Interoperability} is the first requirement software systems have to cope with. Indeed, solutions proposed to improve elderly people's comfort at home may be composed of multiple products, from different manufacturers. Each device taking part in a solution addresses a particular need of the person and makes the solution closer to the ideal one. In any case, elements of the solution have to communicate with each other to render a global service, but the diversity of manufacturers makes the interoperability of devices a real problem.\\
 The definition of a common communication interface for all components of the system could solve the problem, but it requires that all devices are re-engineered to implement this communication interface. With this approach, all products already available cannot be used, because they will never implement this interface. Since the solution must not be limited in terms of usable products, it avoids the definition of a global communication interface.\\
 
-{\bf Adaptation and Evolution} are the two main concerns to deal with in this domain. Software systems dealing with objects or services linked to actions of everyday life, have to take into account the environment in which they are being executed. They should be able to dynamically adapt to changes while running, in order to maintain a level of services, or functionalities. Obviously, these adaptations should not require any restart of the system that would disable all functionalities for the time of restart.\\
+{\bf Adaptation and Evolution} are the two main concerns to deal with in this domain. Software systems dealing with objects or services linked to actions of everyday life, have to take into account the environment in which they are being executed. They should be able to dynamically adapt to changes while running, in order to maintain a level of services, or functionalities. These adaptations should not require any restart of the system, since it would disable all functionalities for the time of restart. This is a real problem considering the trasmission of a request for assistance.\\
 Needs, uses, protocols and technologies are changing. Some functionalities may finally be required, whereas others can become useless and need to be uninstalled. Security or communication protocols can be improved and deployed in new versions that have to be taken into account without needing to re-implement the entire system. Software systems must be ready to accept future and unforeseen evolutions, such as the installation of new services/functionalities.\\
 
 {\bf Openness and Remote Control} are intended to make all functionalities of the software system available for third party applications. Indeed, the connection of some products may require that the system is accessible through a specific application protocol. This availability offers means to connect to the system with no need to be aware of its internal organization. The only interest is on using the functionalities or devices. It is an open door for new unforeseen appliances and for external contributions. Each one can take part in adding a smart behavior on top of a reliable set of functionalities.\\
@@ -176,7 +176,7 @@ Used at different steps, the checkers are different and they address various asp
 
 Variability issues have not been completely addressed, since a small set of components is sufficient for testing. Also, the number of components in the \gls{ida} experimentation was small enough to be handled manually. In the perspective of real deployments, the variations of configuration will impose the creation of tools to help in facing this huge variability.
 
-\subsection{Not tested on embedded platforms}
+\subsection{Improvements for embedded platforms}
 
 In the context of the \gls{ida} project, the choice has been made to deploy \enti{} on a touch screen PC. This PC has high computational power and lots of memory compared to some more embedded platforms. But the deployment of a touch screen PC may not be necessary in all cases and some more embedded devices may be sufficient to automate some tasks. In any case, the runtime of \enti{} requires that a Java virtual machine is deployed on the platform first and thus providing enough power for the JVM to run.
 
@@ -186,12 +186,12 @@ In the context of the \gls{ida} project, the choice has been made to deploy \ent
 \subsection{The S-Cube Network of Excellence}
 
 \begin{wrapfigure}{r}{.3\textwidth}
-	\vspace{-0.5cm}
+	\vspace{-1.4cm}
   \centering
   \includegraphics[width=.3\textwidth]{part1/pics/scube-overview.png}
   \caption{S-Cube Research Framework}
   \label{fig:scube-overview2}
-%	\vspace{0.2cm}  
+  \vspace{-1cm}  
 \end{wrapfigure}
 S-Cube~\footnote{http://www.s-cube-network.eu/} is a European Network of Excellence (NoE) in Software, Services and Systems (S\up{3}). This NoE aims at making European research the leader in the software-services revolution. By connecting research to industry, and unifying multidisciplinary researches, S-Cube aims to develop agile and holistic service engineering methods, and to specify principles and techniques of service adaptation.\\
 This European NoE has been funded by the European FP7 'Coordination' Research Programme  under the ICT theme. Along with strong collaboration and mobility opportunities beyond European research centers, S-Cube has funded several PhD theses in different layers of the S-Cube "BigPicture" (fig.~\ref{fig:scube-overview2}).\\

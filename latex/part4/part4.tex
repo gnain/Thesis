@@ -31,7 +31,7 @@ The first phase of the \gls{ida}~\footnote{http://www.ida-autonomie.fr/} project
 \item[{\bf Project ownership assistance}] ARELIA
 \item[{\bf Research institutes}] INRIA (National Institute of Research in Computer Science and Control), the University of Rennes 1, the University of Rennes 2, LOUSTIC (Information and Communication technology Observation Laboratory), IETR (Rennes Electronics and Telecommunications Institute), CRPCC (Psychology, Cognition and Communication Research Center)
 \item[{\bf Public administrations}] Rennes Metropole, Conseil General d'Ille et Vilaine, Ville de Rennes, CCI Rennes, Critt Santé, MEITO
-\item[{\bf Elderly people}] Anonymous individuals for tests, obviously
+\item[{\bf Elderly people}] Anonymous individuals for tests.
 \end{itemize}
 The conclusions of the project have been compiled in \cite{ASSAD:2010}.\\
 
@@ -69,7 +69,7 @@ After some months of use, Mrs P. asks for the system to automatically switch on 
 
 Following this evolution, the behavior of the lights was sub-optimal, because the lights were switched on whatever the period of the day. To eliminate this issue, an {\bf adaptation} mechanism(bullet 3), described in section~\ref{subsec:adaptation}, was deployed. The sensing of daylight was realized by a KNX weather station outside the house. This weather station is visible on the bottom left corner of figure~\ref{fig:concreteApplication}.\\
 
-One day, her son came with a new device. This touch screen would allow Mrs P. to easily access the Internet and to have video calls with her children and grandchildren. The touch screen also has abilities for controlling devices over \gls{upnp} and \gls{dpws} networks. Since then, the deployed solution is required to be compatible and therefore it is required to export all available devices on \gls{upnp} and \gls{dpws}. This requirement stresses the need for {\bf openness}. Section~\ref{subsec:opening} elaborates about the mechanisms used to answer the fourth bullet of figure~\ref{fig:concreteApplication}.\\
+One day, her son came with a new touch screen device. This touch screen would allow Mrs P. to easily access the Internet and have video calls with her children and grandchildren. The touch screen is able to control devices over \gls{upnp} and \gls{dpws} networks. In order to allow the control of home devices with this touch screen, the solution deployed is required to be \gls{upnp} and/or \gls{dpws} compliant. This requirement stresses the need for {\bf openness}. Section~\ref{subsec:opening} elaborates about the mechanisms used to answer the fourth bullet of figure~\ref{fig:concreteApplication}.\\
 
 
 In order to evaluate the answers of \enti{} in this scenario, and since a real deployment cannot be realized, a test environment with real devices was set up. Just before the description of the solutions offered by \enti{}, the different elements composing this environment are presented in section~\ref{sect:envDeTest}.
@@ -172,7 +172,7 @@ The evolution in this use case is due to a change in Mrs P.'s needs. She wants t
 \subsection{Test Environment}
 
 This evaluation makes use of the previous devices involved in the interoperability evaluation.\\
-In addition, the RMG4s of the KNX mock-up are integrated in the application.
+In addition, the RMG4s of the KNX mock-up is integrated in the application as illustrated in figure~\ref{fig:validEvol}.
 
 \subsection{Resolution Protocol}
 
@@ -217,10 +217,11 @@ The system is currently composed of five components. A {\it TYXIA\_110} remote c
 \centering
 \includegraphics[width=\textwidth]{part4/pics/validAdapt}
 \caption{Components used in the adaptation experiment}
+\label{fig:validAdapt}
 \end{figure}
 
 
-The weather station has been added to the system as described in section~\ref{subsec:evolution}.\\
+The weather station has been added to the system as described in section~\ref{subsec:evolution}. Figure~\ref{fig:validAdapt} presents a view of the system with the meteo station integrated.\\
 
 To be able to perform execution time bench testing, the experiment including the reasoner was deployed from scratch.
 The MSI Top was cleaned of any previous binary element and restarted. The deployment was then realized as follows:\\
@@ -243,21 +244,24 @@ Figure~\ref{figure:bench} presents the execution times measured while a sequence
 
 \end{figure}
 
-As the  worst case scenario has been considered, the system is initially empty. Starting from scratch, all components need to be deployed during the initial configuration. In particular, all the component types have to be downloaded and checks have to be performed on the entire model. It explains the rather long reconfiguration time of step 1:  2.5 seconds. \\
+As the  worst case scenario has been considered, the system is initially empty. Starting from scratch, all components need to be deployed during the initial configuration. In particular, all the component types have to be downloaded and checks have to be performed on the entire model. It explains the rather long reconfiguration time of step 1:  2.5 seconds.\\
 
 The first reconfiguration (day $\rightarrow$ night, step 2) implied the deployment of an instance of RMG4S and the creation of bindings. As this component has never been used before, its component type is not present and has to be downloaded. All other components already deployed are reused. The downloading and deployment of the component type, plus the instance creation and its bindings to the dispatcher, are realized in less than 400 ms.\\
 
 The next 3 reconfigurations (night $\rightarrow$ day $\rightarrow$ night) are much faster. Step 3 simply consists in unbinding and removing the RMG4S component. Step 4 is similar to step 2. Component types are not uninstalled. The RMG4S component type is thus immediately available for an instance creation. Step 5 is similar to step 4. The actual reconfiguration time of these steps is less than 100 ms.\\
 
-For each reconfiguration, a model comparison is performed by the Model@Runtime engine, prior to the real deployment. This comparison detects changes and creates the commands' sequence for the transition. This model comparison takes an almost constant time of 400 ms. Executed before the actual reconfiguration, the comparison delays the reconfiguration of the system, but does not impact the duration of dynamic reconfiguration. \\
+For each reconfiguration, a model comparison is performed by the Model@Runtime engine, prior to the real deployment. This comparison detects changes and creates the commands' sequence for the transition. This model comparison takes an almost constant time of 400 ms. Executed before the actual reconfiguration, the comparison delays the reconfiguration of the system, but does not impact the duration of dynamic reconfiguration.\\
 
 
 
 \section{Openness issue}
 \label{subsec:opening}
 
-As presented in section~\ref{sec:usecase}, the system was required to expose the devices on both \gls{upnp} and \gls{dpws} networks. The next two sections describe how components have been automatically wrapped to be available on these networks. They report an actualized version of the work presented in~\cite{Nain08a}.
+As presented in section~\ref{sec:usecase}, the system was required to expose the devices on both \gls{upnp} and \gls{dpws} networks. The next two sections describe how components have been automatically wrapped to be available on these networks. They report an actualized version of the work presented in~\cite{Nain08a}.\\
 
+The aim of these wrappers is to make the devices installed on EnTiMid, available for third party applications or other control devices, through several application-level protocols.
+It is thus just a mean to share the access to some devices and may not provide all the functions of each device.\\
+UPnP and DPWS could have been implemented as home automation network technologies rather than just wrapping protocols, which would have provided full access to devices' functionalities.
 
 \subsection{UPnP export}
 
@@ -301,7 +305,6 @@ Then, queries are routed by the UPnP exporter to the abstract component in charg
 Once the wrapper is deployed on the MSI Top, the Nabaztag rabbit, the 3G USB stick and the RMG4S were all made available through the UPnP network. Indeed, we were able to view and act on these devices from a remote PC equipped with Windows, and the Intel UPnP toolkit.\\
 The low number of tools that accept the discovery of self-describing UPnP devices can be a limitation for the use of this wrapper.
 
-
 \subsection{DPWS export}
 
 
@@ -325,7 +328,8 @@ Classes are then handled just as classical components. The tool asks for new com
 
 \subsubsection{Results}
 
-Obviously, this is not optimal but it works, since we were able to see all devices and act on them using the DPWS Explorer tool. Other solutions involving more powerful servers in charge of the transformation from a model representation to a component type bundle have been proposed, but not yet completely realized. In any case, the principle is just to extract a tool chain that already works.\\
+This approach allowed to publish installed devices and act on them using the DPWS Explorer tool. Another approach involving external computing resources has been proposed to perform the class generation. The idea is to send a model of the devices to be generated, and get back a complete bundle containing the required component types.\\
+Altough this solution only requires to extract the mechanism, it has not been realized yet and is part of a future work.\\
 
 
 \section{Threats to validity}
@@ -337,7 +341,7 @@ Obviously, this is not optimal but it works, since we were able to see all devic
 
 Variability management, described as being an important issue in home automation for assisted living is not addressed in this experiment.
 Indeed, the scenario considers a unique deployment, for a single person, in a single home. A second round of definitions of a more global scenario may have stressed this requirement for variability management.\\
-Nevertheless, a lot of work has been carried out to try to cope with this issue, such as an approach using Aspect-Oriented Modeling presented in \cite{Morin09a}. Other perspectives to address this question are presented in section~\ref{sec:archiSynth}.
+Nevertheless, a lot of work has been carried out to try to cope with this issue, such as an approach using Aspect-Oriented Modeling presented in~\cite{Morin:2009}. Other perspectives to address this question are presented in section~\ref{sec:archiSynth}.
 
 \subsubsection{Scalability}
 
