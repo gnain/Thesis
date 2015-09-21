@@ -1,0 +1,27 @@
+
+Au cours de ces trois années et demi, de nombreuses personnes ont contribuées à leur manière à ce que cette thèse aboutisse.
+Je remercie d'abord Jean-Marc et Olivier pour leurs conseils et accompagnement au quotidien.
+
+Je remerci chaleureusement Daniel Thouroude avec qui j'ai subis plusieurs soutenances d'étudiants, et qui me fit l'honneur de présider le jury de thèse.
+Merci aussi à Elisabetta et Charles pour leurs critiques, et à Didier pour avoir participé au jury.
+
+Je souhaite ensuite féliciter l'équipe pour m'avoir supporté pendant ces trois ans. Gilles pour les soirées pistaches et les discussions sans queue ni tête. Brice pour les conversations interminables. François pour ces soirées 'apéro' qui ont donné naissance à la K-Strip, et ces week-end sur l'île de Ré. Mickaël pour les tennis, ainsi que Noëmie et Louis pour ce week-end détente mayennais. Arnaud pour sa quête de vache déguisée en lapin. Johann pour ces discussions constructives, et le partage d'expérience. Claire qui dans la dernière ligne droite fût d'une aide précieuse pour EnTiMid.
+
+Les équipes support de l'INRIA, Olivia, Nathalie et Candice pour les opérations de communication, Elisabeth pour ces bon moments d'organisation, Patrice pour l'accompagnement du projet de création.
+
+Mon père, ma mère, Jonathan, Magali, Anne-Marie, Gérard, Léone, Eric, Sandrine, Jacques, Patricia, Olivier, Benoît, Isabelle, Stéphane, Isabelle, François, Marine, Clément, Anna, Léa, Chloé, Guillaume, Jessica, Alexis et Lucie pour leur omiprésence.
+Jules pour ces nombreuses discussions dans la dernière ligne droite.
+Marie et Charlotte pour ces heures passées à converser sur tout et rien.
+
+Aurély qui malgré la distance a toujours pris des nouvelles et m'a encouragé.
+
+Martine et son équipe pour les repas. Le café de la cafet', suffisemment mauvais pour nous forcer à travailler.
+Facebook pour avoir grandement facilité ma procrastination.
+
+
+
+
+
+
+
+Enfin je dédicace cette thèse à Philippe G. qui nous a quitté trop tôt, qui m'a fait confiance et qui m'a tant apris.

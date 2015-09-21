@@ -1,0 +1,116 @@
+Compte rendu
+Point avancement thèse 6 Fev. 2009
+===================================
+
+Un premier travail d'analyse et d'état de l'art autour des SOA est nécessaire. Cet état de l'art pourra être centré autour des descriptions de WS(WSDL), des orchestrations et des problématiques d'adaptation dans les SOA.
+
+L'idée pour la suite des travaux est de travailler à la composition dynamique des éléments d'interfaces utilisateur fournis par les services prenant part à une orchestration. Une adaptation de l'orchestration (apparition, disparition, modification d'un service composant l'orchestration) entraîne alors une recomposition de l'interface utilisateur. Il est alors question de faire une analyse statique des entrées et sorties de chaque service, afin de ne présenter sur l'interface que les éléments strictement nécessaires (ne pas présenter un contrôle s'il peut être complété automatiquement par agrégation des informations de sorties d'autres service, par exemple).
+
+Des recherches seront aussi à mener afin d'intégrer des éléments de logique floue pour décrire des politiques d'adaptation des orchestration, ou permettre une description simple des interactions entre les services proposés par des périphériques physiques présent dans un bâtiment (caméras, détecteurs de luminosité, de température, etc...) et des services disponibles sur l'Internet (Météo, info trafic, prévisions de consommations électriques, alertes pollution,...). En outre, ces services devront être uniformément représentés à un niveau WS, ce qui permet d'accéder à une caméra du bâtiment de la même façon qu'à un service météo sur internet.
+
+Tout cela dans le but de rendre accessible à tout un chacun, la définition de scénarios(orchestration) à partir d'une bases de services; scénarios prenant en compte tant des objets physiques que des informations issues de services distants. Cette accessibilité, facilité de mise en oeuvre, pourra par ailleurs être évaluée au sein du laboratoire d'étude des usages LOUSTIC.
+
+
+
+
+
+Point d'avancement 1er Juillet.
+===================================
+
+- Fin février : Jury de soutenances des projets M2 DRI et LPro SPH
+- Mois de mars, Nancy pour CAL/LMO puis LYOU pour s-cube, travaux sur les délivrables s-cube, preparation JPOs Travail sur IDA.
+- Avril Mise en place du projet ITI, vacances et déménagement. Papier CIT.
+- Mai Séminaire Triskell, ICSE, Vacances
+- Juin SS Edinbourgh, SS Crête, Papier ServiceWave
+- Juillet travail sur ITI
+
+travaux en cours
+	Définition d'un langage de description des ihm, en séparant fond, forme, profils/filtres. Le but étant de pouvoir ensuite composer tout ca, avec des technos modèles, puis générer des interfaces pour différentes plateformes; création d'un démonstrateur pour valider l'approche.
+	Validation pas l'usage d'une "interface type" (projet ITI) avec un rapport de préconisations à la fin.
+	
+Travaux prévus:
+	Prise en compte de EnTiMid v2 et documentation.
+	Travail sur les compo de modèles avec mickael pour générer le modèle de l'interface a générer.
+	Travail de génération (travaux déjà en cours cf TP GWT par ex.)
+	Intégration de l'approche IHM.
+	Travail sur la logique floue pour la description des contrôles sur EnTiMid (avec Gilles, Franck?).
+
+Résumé des discussions
+----------------------
+
+Trois axes commencent à se dessiner:
+	- Modélisation de l'architecture fonctionnelle, Models@runtime en jouant sur les notions d'auto-configuration grâce à des mécanismes d'auto-description. L'architecture à base de composants couplée à une architecture orientée services permet une réutilisabilité des techniques déjà développées et dont la fiabilité et l'intérêt ont déjà été montrés. L'architecture orientée services ajoute une certaine facilité de gestion de la dynamicité et de la variabilité. Réfléchir à des mécanismes de boites-noir déportées pour assurer fiabilité, adaptation, correction/détection d'erreurs).
+	- Travaux sur les IHM avec des perspectives de compositions de modèles (composition des différents petits modèles de description de chacun des services, pour déterminer le modèle de l'interface finale), une nouvelle composition pour filtrer les informations et contrôles affichables en fonction du profil d'utilisateur courant, puis potentiellement de transformation vers des modèles (de la description de l'IHM à sa techno d'implémentation), en collaboration avec Mickaël.
+	- Des travaux à mener sur les moyens de description des réactions du système en fonction de données (End-User programming, logique floue, complex event processing), en collab avec Franck Chauvel et/ou Gilles Perrouin. Peut être intéressant à intégrer, mais pas de contribution envisageable.
+
+Réflexions sur les possibilités de réaliser des études/validations empiriques des résultats des travaux grâce à la plateforme LOUSTIC.
+Autre réflexion à mener sur le plan de valorisation des travaux (communauté, conférences à viser, etc.).
+
+
+Point d'avancement Décembre.
+===================================
+
+- Début aout : Vacances
+- Fin aout AOSD SummerSchool Nantes
+- Début septembre: Début des travaux EnTiMid + M@RT et soutenances de stage DRI
+- Discussions avec deltadore pour avoir la clé USB, et monter les maquettes Fête de la science.
+- Démonstration à IDA, 1er travail Fête de la science
+- Octobre: Définition de scénario d'usage IDA pour la fête de la science
+- CIT'09 présentation des papiers en chine
+- Point atelier fête de la science avec service COM inria.
+- Rencontre Société CUSTOS avancement EnTiMid @ Runtime
+- Novembre, répétitions + fête de la science
+- Début de réflexion sur les activités de création d'entreprise
+- Démo avancé pour IDA (fête de la science).
+
+
+Résumé des discussions:
+-----------------------
+
+EnTiMid V2 ou V3: Il est décidé de continuer d'investir sur la V2, et de créer une branche V3 pour permettre aux autres de jouer, d'expérimenter.
+Beaucoup de gens attendent une version: Patrick Mercier, Domotique, IDA, etc.)
+
+Intégrations en cours:
+Outils de Paqui:
+- design/creation de composants composit grâce a des transfos KMT
+- Création d'applications par boites et flèches.
+- Aide à la création des bundle pilotes: description graphique des devices, puis génération du squelette du pilote en Java.
+Outils des bordelais:
+- peut être utile pour décrire des fragments d'archi (features). Utilisation du simulateur graphique en ligne de mire.
+
+Nouveau projet LOUSTIC:
+reflexions avec Arnaud sur des aspects d'inteccation homme machine dans un conteste IOT.
+
+Pistes sujet de thèse:
+Unifying IoT and IoS using MDE technics.
+Entimid est capable de faire de l'internet of things.
+Il est aussi possible d'intégrer des services (google agenda, etc..)
+Du coup on peut coupler IoT et IoS (gérer sa maison avec un agenda google par exemple).
+
+=> Problématiques de compositions de modèles
+  - des objets, des services pour faire les applications adaptatives au runtime
+  - des interfaces: générer le fond + la forme a partir des objets présents au runtime, et du profil utilisateur.
+
+=> Quels problèmes ont été résous, lesquels restent en suspend ?
+
+Création d'activité:
+Possible création de deux entités séparées mais fortement liées: 1 JEU JOG R&D sur EnTimid recherches amont et une autre avec PM BoINRIA intégration.
+
+Papier BPMN+FD
+Repoussé a une date ultérieur, en attendant que le début de la chaine soit validé du coté de paul.
+
+
+Travaux prévus:
+---------------
+- Ecriture de papier CBS@runtime over SOA
+- Montage de projet loustic pour validation de compo d'interfaces et exploration de nouvelles interactions.
+- Suite de ICSE'09: mise en application avec démonstrateur ? //NON pas assez de GAP
+- Papier sur connexions IoS IoT pas MDE pour vérifier l'interet de la communauté pour l'approche.
+- Mise en place d'un vraie raisoner ?
+
+
+
+
+
+
+

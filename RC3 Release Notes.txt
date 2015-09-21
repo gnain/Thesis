@@ -1,0 +1,52 @@
+Général
+==============
+ - Numérotation des chapitres changée. Ils ne sont plus réinitialisés à chaque début de partie.
+
+Chapitre 1 : Résumé en Francais
+==========================
+Ajouté
++ Paragraphe liaison S-Cube
+
+Partie 1
+=============
+- Introduction corrigée
+
+Chapitre 2 : Introduction
+=============
+- Introduction corrigée
+- Section 2.3 Phrase rajoutée en fin de § Safety@Security 
+ 
+Chapitre 3 : State Of Art
+ =============
+  - Annonce des sections dans l'introduction du chapitre.
+  - Section 3.5.1.1 Tableau ajouté 
+  - Section 3.5.1.2 sur FraSCAti modifiée
+ 
+Chapitre 6 : Contribution
+ =============
+ - Tableau "strengths and weaknesses" introduit en section 3.2.1
+ - Section 4 : Figure + § réjouté sur la génération des instances
+ 
+ Validation
+ =============
+ - Devices available for the experiment   changé en   Experimental Setup
+ - Section 7.1 : Noms des partenaires explicité;  description des rôles dans la définition du scénario.
+ - Section 7.8.2: reférence vers papier ICSE'09
+ - Section 7.8.4 réécrite en partie
+ - Chapitre 8 : explicitation de l'exigence validée. En fin d'introduction, en conclusion
+ - Chapitre 9 : déplacé en perspectives "Industrial perspectives"
+ 
+Chapitre 9 : Conclusion
+===================
+- Section 9.8.3 renomée de "No checkers" en "Checkers trop légers"
+- §9.9 : liaison S-cube Ajouté
+
+Chapitre 10 : Perspectives
+ =============
+ - ajout §10.3 sur SelfLet pour la distribution et la pervasivité
+ - Ref vers travaux de Charles (ICSE) dans section 10.4.2
+ 
+ Chapitre 11
+ ==============
+ - Section 11.1: Référence vers démo Models en fin de section
+ 
